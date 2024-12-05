@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Estrutura do Dashboard */
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .chart-container {
+      position: relative;
+      height: 150px;
+    }
+
+    /* Ajuste para gráficos horizontais */
+    .horizontal-bar {
+      text-align: left;
+      padding: 0 10px;
+    }
+
+    .horizontal-bar span {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+    }
+
+    .bar {
+      height: 15px;
+      background: #4caf50;
+      border-radius: 8px;
+    }
+
+    /* Layout Responsivo */
+    @media screen and (max-width: 768px) {
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Faturamento -->
+    <div class="card">
+      <h3>Faturamento (R$)</h3>
+      <div class="chart-container">
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Quantidade de Vendas -->
+    <div class="card">
+      <h3>Quantidade de Vendas</h3>
+      <div class="chart-container">
+        <canvas id="salesChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Ticket Médio -->
+    <div class="card">
+      <h3>Ticket Médio</h3>
+      <div class="chart-container">
+        <canvas id="ticketChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Faturamento por Loja -->
+    <div class="card">
+      <h3>Faturamento (R$) por Loja</h3>
+      <div class="horizontal-bar">
+        <span>
+          <strong>Mercado Livre</strong>
+          <strong>R$ 109,342</strong>
+        </span>
+        <div class="bar" style="width: 80%; background-color: #4caf50;"></div>
+        <span>
+          <strong>Amazon</strong>
+          <strong>R$ 34,200</strong>
+        </span>
+        <div class="bar" style="width: 40%; background-color: #2196f3;"></div>
+      </div>
+    </div>
+
+    <!-- Faturamento por Vendedor -->
+    <div class="card">
+      <h3>Faturamento (R$) por Vendedor</h3>
+      <div class="chart-container">
+        <canvas id="sellerChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Faturamento por Estado -->
+    <div class="card">
+      <h3>Faturamento (R$) por Estado</h3>
+      <div class="chart-container">
+        <canvas id="stateChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Faturamento por Produto -->
+    <div class="card">
+      <h3>Faturamento (R$): Margem (%) por Produto</h3>
+      <div class="chart-container">
+        <canvas id="productChart"></canvas>
+      </div>
+    </div>
+
+    <!-- Faturamento por Situação -->
+    <div class="card">
+      <h3>Faturamento (R$) por Situação</h3>
+      <div class="chart-container">
+        <canvas id="statusChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dados dos gráficos (exemplo)
+
+    // Faturamento
+    const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+    new Chart(revenueCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [{
+          label: 'Faturamento (R$)',
+          data: [143581.25, 110000, 134000, 145000, 122000, 131000, 143000, 152000, 160000, 134000, 145000, 165000],
+          borderColor: '#4caf50',
+          backgroundColor: 'rgba(76, 175, 80, 0.1)',
+          tension: 0.4,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // Quantidade de Vendas
+    const salesCtx = document.getElementById('salesChart').getContext('2d');
+    new Chart(salesCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [{
+          label: 'Quantidade de Vendas',
+          data: [24, 18, 20, 22, 25, 23, 21, 27, 30, 28, 26, 32],
+          borderColor: '#2196f3',
+          backgroundColor: 'rgba(33, 150, 243, 0.1)',
+          tension: 0.4,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // Ticket Médio
+    const ticketCtx = document.getElementById('ticketChart').getContext('2d');
+    new Chart(ticketCtx, {
+      type: 'line',
+      data: {
+        labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [{
+          label: 'Ticket Médio (R$)',
+          data: [5982.55, 4000, 5000, 5500, 4800, 5200, 6000, 6100, 6200, 5900, 5800, 6400],
+          borderColor: '#ff9800',
+          backgroundColor: 'rgba(255, 152, 0, 0.1)',
+          tension: 0.4,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } }
+      }
+    });
+
+    // Adicione outros gráficos (vendedor, estado, situação) aqui usando a mesma estrutura
+  </script>
+</body>
+</html>

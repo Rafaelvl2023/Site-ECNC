@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Terminais - São Paulo</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* styles.css */
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 20px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .header .logo img {
+            width: 100px;
+        }
+
+        .header .title {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .header .title h1 {
+            font-size: 24px;
+        }
+
+        .header .title strong {
+            color: #4CAF50;
+        }
+
+        .header .total-faturamento {
+            text-align: right;
+        }
+
+        .header .total-faturamento h2 {
+            color: #4CAF50;
+            margin: 5px 0 0;
+        }
+
+        .terminals {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .card img {
+            width: 80px;
+            margin-bottom: 10px;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card ul li {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .card ul li strong {
+            color: #333;
+        }
+
+        .card ul li:last-child strong {
+            color: #4CAF50;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <header class="header">
+            <div class="logo">
+                <img src="opmon-logo.png" alt="OpMon Logo">
+            </div>
+            <div class="title">
+                <h1>Terminais <strong>São Paulo</strong></h1>
+            </div>
+            <div class="total-faturamento">
+                <span>Faturamento Total</span>
+                <h2 id="total-faturamento">R$ 34.022,85</h2>
+            </div>
+        </header>
+
+        <!-- Seção dos Terminais -->
+        <section class="terminals" id="terminals">
+            <!-- Os cartões serão gerados dinamicamente com JavaScript -->
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // script.js
+
+        // Dados dos Terminais
+        const terminalsData = [
+            { cidade: "Campinas", carros: 13, passageiros: 37, faturamento: 3253.03 },
+            { cidade: "Guarujá", carros: 12, passageiros: 35, faturamento: 2895.34 },
+            { cidade: "Jundiaí", carros: 9, passageiros: 34, faturamento: 2225.66 },
+            { cidade: "Mogi das Cruzes", carros: 7, passageiros: 22, faturamento: 1554.08 },
+            { cidade: "Mogi Mirim", carros: 8, passageiros: 28, faturamento: 1980.33 },
+            { cidade: "Osasco", carros: 14, passageiros: 36, faturamento: 3222.43 },
+            { cidade: "Ribeirão Preto", carros: 14, passageiros: 37, faturamento: 3312.67 },
+            { cidade: "São Carlos", carros: 7, passageiros: 29, faturamento: 1832.06 },
+            { cidade: "São José dos Campos", carros: 2, passageiros: 37, faturamento: 328.50 },
+            { cidade: "Barra Funda SP", carros: 18, passageiros: 37, faturamento: 4655.34 },
+            { cidade: "Jabaquara SP", carros: 17, passageiros: 37, faturamento: 4754.06 },
+            { cidade: "Tiête SP", carros: 21, passageiros: 37, faturamento: 6012.66 },
+        ];
+
+        // Função para renderizar os cartões
+        function renderTerminals(terminals) {
+            const terminalsContainer = document.getElementById("terminals");
+            let totalFaturamento = 0;
+
+            terminals.forEach((terminal) => {
+                // Calcula o total de faturamento
+                totalFaturamento += terminal.faturamento;
+
+                // Cria o cartão
+                const card = document.createElement("div");
+                card.classList.add("card");
+
+                card.innerHTML = `
+      <h3>${terminal.cidade}</h3>
+      <img src="bus-${terminal.faturamento < 1000 ? "red" : "green"}.png" alt="Ônibus">
+      <ul>
+        <li><strong>Nº de Carros:</strong> ${terminal.carros}</li>
+        <li><strong>Média de Passageiros:</strong> ${terminal.passageiros}</li>
+        <li><strong>Faturamento:</strong> R$ ${terminal.faturamento.toFixed(2)}</li>
+      </ul>
+    `;
+
+                // Adiciona o cartão ao container
+                terminalsContainer.appendChild(card);
+            });
+
+            // Atualiza o faturamento total
+            document.getElementById("total-faturamento").textContent = `R$ ${totalFaturamento.toFixed(2)}`;
+        }
+
+        // Renderiza os terminais
+        renderTerminals(terminalsData);
+
+    </script>
+</body>
+
+</html>
