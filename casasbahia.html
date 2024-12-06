@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casas Bahia Clone</title>
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Cabeçalho Superior */
+    .header-top {
+      background: #f4f4f4;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    .header-top .container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Cabeçalho Principal */
+    .header-main {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .header-main .logo h1 {
+      font-size: 24px;
+    }
+
+    .header-main .highlight {
+      color: #e60000;
+    }
+
+    .header-main .search-bar {
+      flex: 1;
+      margin: 0 20px;
+    }
+
+    .header-main .search-bar input {
+      width: 80%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .header-main .user-actions a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    /* Navegação */
+    .navigation {
+      background: #0057b7;
+      color: white;
+    }
+
+    .navigation ul {
+      display: flex;
+      list-style: none;
+      padding: 10px 0;
+    }
+
+    .navigation ul li {
+      margin-right: 20px;
+    }
+
+    .navigation ul li a {
+      text-decoration: none;
+      color: white;
+    }
+
+    /* Ofertas em Destaque */
+    .featured-offers {
+      background: #f9f9f9;
+      padding: 20px 0;
+    }
+
+    .carousel {
+      display: flex;
+      align-items: center;
+    }
+
+    .carousel-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .carousel-items img {
+      margin: 0 10px;
+    }
+
+    /* Promoção Frete Grátis */
+    .free-shipping {
+      background: #0057b7;
+      color: white;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .free-shipping .highlight {
+      color: #ffcc00;
+    }
+
+    .app-promo img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .app-promo button {
+      background: white;
+      color: #0057b7;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho Superior -->
+  <header class="header-top">
+    <div class="container">
+      <div class="top-left">
+        <span>Chama no Zap</span> | 
+        <span>Encontre uma loja</span> | 
+        <span>Atendimento</span> | 
+        <span>Tradutor para Libras</span>
+      </div>
+      <div class="top-right">
+        <span>Lista de Presentes</span> | 
+        <span>Cartão Casas Bahia</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Cabeçalho Principal -->
+  <header class="header-main">
+    <div class="container">
+      <div class="logo">
+        <h1>CASAS <span class="highlight">BAHIA</span></h1>
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="O que você tá procurando?" />
+        <button>🔍</button>
+      </div>
+      <div class="user-actions">
+        <a href="#">Entre ou cadastre-se</a>
+        <a href="#"><span>❤️</span></a>
+        <a href="#"><span>🛒</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegação -->
+  <nav class="navigation">
+    <div class="container">
+      <ul>
+        <li><a href="#">Compre por departamentos</a></li>
+        <li><a href="#">Telefonia</a></li>
+        <li><a href="#">Eletrodomésticos</a></li>
+        <li><a href="#">TVs e Vídeo</a></li>
+        <li><a href="#">Móveis</a></li>
+        <li><a href="#">Eletroportáteis</a></li>
+        <li><a href="#">Informática</a></li>
+        <li><a href="#">Serviços</a></li>
+        <li><a href="#">Carnê Digital</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Ofertas em Destaque -->
+  <section class="featured-offers">
+    <div class="container">
+      <div class="carousel">
+        <button class="carousel-btn">⬅</button>
+        <div class="carousel-items">
+          <img src="https://via.placeholder.com/150" alt="Black Friday Prorrogada">
+          <img src="https://via.placeholder.com/150" alt="Telas">
+          <img src="https://via.placeholder.com/150" alt="Iphone">
+          <img src="https://via.placeholder.com/150" alt="Eletrodomésticos">
+          <img src="https://via.placeholder.com/150" alt="Ar & Ventilação">
+        </div>
+        <button class="carousel-btn">➡</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promoção Frete Grátis -->
+  <section class="free-shipping">
+    <div class="container">
+      <div class="promo-text">
+        <h2>Todos os produtos com <span class="highlight">FRETE GRÁTIS BRASIL</span></h2>
+        <p>Válido para itens vendidos e entregues por Casas Bahia no APP, a partir de R$ 199,00.</p>
+      </div>
+      <div class="app-promo">
+        <img src="https://via.placeholder.com/100" alt="QR Code">
+        <button>BAIXE AGORA</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Exemplo: Botão de carrossel
+    const carouselButtons = document.querySelectorAll('.carousel-btn');
+    carouselButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        alert('Botão clicado!');
+      });
+    });
+  </script>
+</body>
+</html>

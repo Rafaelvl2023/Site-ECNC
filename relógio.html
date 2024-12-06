@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio de Contagem Regressiva</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            color: #333;
+        }
+
+        #countdown-container {
+            background-color: #222;
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        #countdown {
+            font-size: 13em;
+            font-weight: bold;
+        }
+
+        input[type="time"] {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.2em;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        input[type="time"]:focus {
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <input type="time" id="timeInput" value="01:00">
+    
+    <div id="countdown-container">
+        <div id="countdown">00:00:00</div>
+    </div>
+
+    <script>
+        // Obtém os elementos do DOM
+        const countdownElement = document.getElementById("countdown");
+        const timeInput = document.getElementById("timeInput");
+
+        // Função para calcular a contagem regressiva
+        function startCountdown() {
+            const inputTime = timeInput.value.split(':');
+            const targetHour = parseInt(inputTime[0]);
+            const targetMinute = parseInt(inputTime[1]);
+
+            // Pega a hora atual
+            const currentTime = new Date();
+            const currentHour = currentTime.getHours();
+            const currentMinute = currentTime.getMinutes();
+            const currentSecond = currentTime.getSeconds();
+
+            // Calcula o tempo restante em segundos
+            const targetTime = new Date(currentTime);
+            targetTime.setHours(targetHour, targetMinute, 0, 0);
+
+            const remainingTime = targetTime - currentTime;
+
+            if (remainingTime <= 0) {
+                countdownElement.textContent = "00:00:00";
+                return;
+            }
+
+            const hoursLeft = Math.floor(remainingTime / (1000 * 60 * 60));
+            const minutesLeft = Math.floor((remainingTime % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsLeft = Math.floor((remainingTime % (1000 * 60)) / 1000);
+
+            // Atualiza o elemento de contagem regressiva
+            countdownElement.textContent = `${padZero(hoursLeft)}:${padZero(minutesLeft)}:${padZero(secondsLeft)}`;
+        }
+
+        // Função para adicionar o zero à esquerda em números menores que 10
+        function padZero(number) {
+            return number < 10 ? '0' + number : number;
+        }
+
+        // Atualiza a contagem regressiva a cada segundo
+        setInterval(startCountdown, 1000);
+    </script>
+</body>
+</html>
