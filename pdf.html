@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orçamento</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            background-image: url('https://img.myloview.com.br/fotomurais/fundo-branco-wallpaper-geometrica-700-8268110.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            position: relative;
+        }
+
+        form {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 8px 8px rgba(0, 0, 0, 0.582);
+            margin-top: 30px;
+            border: 1px solid rgba(146, 148, 255, 0.897)
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        input,
+        select {
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 7px 10px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .table-container {
+            position: absolute;
+            top: 27%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            overflow-x: auto;
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #c2daff;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+    <div class="logo">
+        <img style="width: 200px;" src="https://www.signemacao.com.br/wp-content/uploads/2015/03/img-logo-02.png" alt="ECNC">
+    </div>
+
+    <form id="orcamento-form">
+        <label for="valor_produto">Valor do Produto:</label>
+        <input type="text" name="valor_produto" id="valor_produto" value="" required>
+
+        <select id="maquinas" name="maquinas" required>
+            <option value="" disabled selected>Selecione uma máquina</option>
+            <option value="L-560">L-560</option>
+            <option value="L-1060">L-1060</option>
+            <option value="L-1210">L-1210</option>
+            <option value="L-1610">L-1610</option>
+        </select>
+
+        <button type="submit">Gerar PDF</button>
+    </form>
+
+    <script>
+        document.getElementById('orcamento-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const valorProduto = document.getElementById('valor_produto').value;
+            const maquinaSelecionada = document.getElementById('maquinas').value;
+
+            // Criação do PDF usando jsPDF
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(16);
+
+            // Adicionar título
+            doc.text("Orçamento", 20, 20);
+
+            // Adicionar dados do orçamento
+            doc.text(`Valor do Produto: R$ ${valorProduto}`, 20, 40);
+            doc.text(`Máquina Selecionada: ${maquinaSelecionada}`, 20, 50);
+
+            // Salvar o PDF
+            doc.save('orcamento.pdf');
+        });
+    </script>
+</body>
+</html>
