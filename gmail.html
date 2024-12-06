@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Estilo Gmail</title>
+    <!-- Bootstrap 4 CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .sidebar {
+            background-color: #fff;
+            height: 100vh;
+            border-right: 1px solid #ddd;
+        }
+
+        .sidebar .compose-btn {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .sidebar .menu {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar .menu li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar .menu button {
+            width: 100%;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: left;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar .menu button:hover {
+            background-color: #e9ecef;
+        }
+
+        .sidebar .badge {
+            background-color: #1a73e8;
+            color: white;
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            float: right;
+        }
+
+        .menu {
+            margin-top: 20px;
+        }
+
+        .header {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header .search-bar input {
+            border-radius: 20px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+        }
+
+        .tabs {
+            border-bottom: 1px solid #ddd;
+            background-color: #fff;
+            padding: 10px 0;
+        }
+
+        .tab {
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 14px;
+            color: #555;
+            background-color: #f5f5f5;
+        }
+
+        .tab.active {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+        .email-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .email-item:hover {
+            background-color: #f9f9f9;
+        }
+
+        .email-item .sender {
+            font-weight: bold;
+        }
+
+        .email-item .time {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .email-item .subject {
+            color: #555;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .right-panel {
+            background-color: #f8f9fa;
+            height: 100vh;
+            border-left: 1px solid #ddd;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .right-panel h4 {
+            font-weight: bold;
+        }
+
+        .right-panel p {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barra lateral -->
+            <nav class="col-md-2 col-sm-3 d-none d-sm-block sidebar">
+                <button class="compose-btn mt-5 mb-3">✉️ Compor</button>
+                <ul class="menu">
+                    <li><button>📥 Caixa de entrada <span class="badge">7.536</span></button></li>
+                    <li><button>⭐ Com estrela</button></li>
+                    <li><button>🚫 Suspenso</button></li>
+                    <li><button>📤 Enviado</button></li>
+                    <li><button>📝 Rascunhos <span class="badge">36</span></button></li>
+                    <li><button>📁 Mais</button></li>
+                </ul>
+            </nav>
+
+            <!-- Conteúdo principal -->
+            <div class="col-md-9 col-sm-9 col-12">
+                <!-- Cabeçalho -->
+                <div class="header p-3 d-flex justify-content-between align-items-center">
+                    <div class="search-bar w-75">
+                        <input type="text" class="form-control" placeholder="Pesquisar correio">
+                    </div>
+                    <div class="profile">
+                        <img src="https://via.placeholder.com/36" class="rounded-circle" alt="Perfil">
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs px-3 d-flex">
+                    <div class="tab active">📩 Principal</div>
+                    <div class="tab">🏷️ Promoções <span class="badge">46 novas</span></div>
+                    <div class="tab">🌐 Social <span class="badge">50 novas</span></div>
+                    <div class="tab">📅 Atualizações <span class="badge">49 novas</span></div>
+                </div>
+
+                <!-- Lista de e-mails -->
+                <div class="email-list">
+                    <div class="email-item px-3">
+                        <div class="details">
+                            <div class="sender">CreativeNews</div>
+                            <div class="subject">De Taylor Swift ao seu repeat eterno: Spotify Wrapped...</div>
+                        </div>
+                        <div class="time">07:00</div>
+                    </div>
+                    <div class="email-item px-3">
+                        <div class="details">
+                            <div class="sender">LottieFiles</div>
+                            <div class="subject">Introducing Lottie Theming 🎨 - One file...</div>
+                        </div>
+                        <div class="time">05:49</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Painel direito -->
+            <aside class="col-md-1 d-none d-md-block right-panel">
+                <h4>Resumo</h4>
+                <p><strong>Total de E-mails:</strong> 9,229</p>
+                <p><strong>Caixa de Entrada:</strong> 7,536 mensagens não lidas</p>
+                <h4>Atividades Recentes</h4>
+                <p>- 7 novas promoções adicionadas</p>
+                <p>- 3 e-mails sociais destacados</p>
+                <p>- Atualizações de tarefas pendentes</p>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Bootstrap 4 JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

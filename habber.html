@@ -32,6 +32,18 @@
             border-bottom: 1px solid #ddd;
         }
 
+        .ajuste {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .logo img {
             height: 50px;
         }
@@ -39,12 +51,20 @@
         .logo .tagline {
             font-size: 12px;
             color: #888;
-            margin-left: 10px;
+            margin-top: -5px;
+        }
+
+
+        .top {
+            display: flex;
+            width: 100%;
         }
 
         .navbar ul {
             display: flex;
             list-style: none;
+            margin-top: 15px;
+            margin-left: auto;
         }
 
         .navbar li {
@@ -61,82 +81,40 @@
             width: 20px;
             margin-left: 10px;
         }
-
-        /* Hero Section */
-        .hero {
-            position: relative;
-            text-align: center;
-            color: #fff;
-        }
-
-        .hero img {
-            width: 100%;
-            height: auto;
-        }
-
-        .hero .overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .hero h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        .hero h2 {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .hero .btn {
-            background: #0056b3;
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-        }
     </style>
 </head>
 
 <body>
-    <!-- Cabeçalho -->
     <header class="header">
-        <div class="container">
-            <div class="logo">
-                <img src="https://habber.com/wp-content/uploads/2020/04/1.png.webp" alt="Logo HabberTec">
-                <span class="tagline">spirit of innovation</span>
+        <div class="top">
+            <div class=" container ajuste">
+                <div class="logo">
+                    <img src="https://habber.com/wp-content/uploads/2020/04/1.png.webp" alt="Logo HabberTec">
+                    <span class="tagline">spirit of innovation</span>
+                </div>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="#">Soluções</a></li>
+                        <li><a href="#">Quem Somos</a></li>
+                        <li><a href="#">Clientes</a></li>
+                        <li><a href="#">Atual</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Oportunidades</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="#">Soluções</a></li>
-                    <li><a href="#">Quem Somos</a></li>
-                    <li><a href="#">Clientes</a></li>
-                    <li><a href="#">Atual</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Oportunidades</a></li>
-                    <li><a href="#">Contato</a></li>
-                </ul>
-            </nav>
-            <!-- <div class="language-switch">
+        </div>
+    </header>
+
+
+
+    <!-- <div class="language-switch">
                 <a href="#"><img src="es.png" alt="Espanhol"></a>
                 <a href="#"><img src="en.png" alt="Inglês"></a>
                 <a href="#"><img src="pt.png" alt="Português"></a>
                 <a href="#"><img src="search-icon.png" alt="Pesquisar"></a>
             </div> -->
-        </div>
-    </header>
 
     <!-- Banner Principal
     <section class="hero">
