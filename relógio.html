@@ -24,11 +24,14 @@
             border-radius: 15px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            max-width: 90vw;
+            width: 100%;
         }
 
         #countdown {
             font-size: 13em;
             font-weight: bold;
+            transition: text-shadow 0.5s ease-in-out;
         }
 
         input[type="time"] {
@@ -47,6 +50,40 @@
             outline: none;
         }
 
+        /* Ajustes para telas menores */
+        @media (max-width: 768px) {
+            #countdown {
+                font-size: 8em; /* Reduz o tamanho da fonte para telas menores */
+            }
+
+            input[type="time"] {
+                font-size: 1em; /* Ajusta o tamanho do input */
+                top: 15px;
+                right: 15px;
+            }
+
+            #countdown-container {
+                padding: 30px; /* Reduz o padding para maior aproveitamento da tela */
+            }
+        }
+
+        @media (max-width: 480px) {
+            #countdown {
+                font-size: 6em; /* Ainda menor em telas bem pequenas */
+            }
+
+            #countdown-container {
+                padding: 20px;
+                max-width: 95vw; /* Garante que o cronômetro ocupe mais espaço em telas pequenas */
+            }
+
+            input[type="time"] {
+                font-size: 0.9em; /* Ajuste fino para input em telas pequenas */
+                top: 10px;
+                right: 10px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -62,6 +99,8 @@
         const countdownElement = document.getElementById("countdown");
         const timeInput = document.getElementById("timeInput");
 
+        let isFlashing = false; // Variável para controlar o estado de piscar
+
         // Função para calcular a contagem regressiva
         function startCountdown() {
             const inputTime = timeInput.value.split(':');
@@ -74,14 +113,15 @@
             const currentMinute = currentTime.getMinutes();
             const currentSecond = currentTime.getSeconds();
 
-            // Calcula o tempo restante em segundos
+            // Calcula o tempo restante em milissegundos
             const targetTime = new Date(currentTime);
             targetTime.setHours(targetHour, targetMinute, 0, 0);
-
             const remainingTime = targetTime - currentTime;
 
             if (remainingTime <= 0) {
                 countdownElement.textContent = "00:00:00";
+                countdownElement.style.textShadow = ''; // Remove o brilho quando o tempo acabar
+                isFlashing = false; // Garante que o brilho é desativado quando o tempo acabar
                 return;
             }
 
@@ -91,6 +131,15 @@
 
             // Atualiza o elemento de contagem regressiva
             countdownElement.textContent = `${padZero(hoursLeft)}:${padZero(minutesLeft)}:${padZero(secondsLeft)}`;
+
+            // Verifica se faltam 10 minutos ou menos
+            if (remainingTime <= 10 * 60 * 1000) {
+                // Ativa o efeito de piscar
+                toggleFlashingEffect();
+            } else {
+                countdownElement.style.textShadow = ''; // Remove o brilho
+                isFlashing = false; // Certifica-se de que o brilho não está ativado
+            }
         }
 
         // Função para adicionar o zero à esquerda em números menores que 10
@@ -98,8 +147,38 @@
             return number < 10 ? '0' + number : number;
         }
 
+        // Função para alternar o efeito de brilho
+        function toggleFlashingEffect() {
+            if (isFlashing) {
+                countdownElement.style.textShadow = ''; // Remove o brilho
+            } else {
+                countdownElement.style.textShadow = '0 0 20px yellow, 0 0 30px red'; // Efeito de brilho
+            }
+            isFlashing = !isFlashing; // Alterna o estado
+        }
+
         // Atualiza a contagem regressiva a cada segundo
-        setInterval(startCountdown, 1000);
+        setInterval(startCountdown, 500);
+
+        // Alterna o efeito de piscar a cada 3 segundos, mas somente se faltar 10 minutos ou menos
+        setInterval(function() {
+            const inputTime = timeInput.value.split(':');
+            const targetHour = parseInt(inputTime[0]);
+            const targetMinute = parseInt(inputTime[1]);
+
+            const currentTime = new Date();
+            const targetTime = new Date(currentTime);
+            targetTime.setHours(targetHour, targetMinute, 0, 0);
+            const remainingTime = targetTime - currentTime;
+
+            if (remainingTime <= 10 * 60 * 1000 && !isFlashing) {
+                toggleFlashingEffect(); // Ativa o brilho
+            } else if (remainingTime > 10 * 60 * 1000) {
+                countdownElement.style.textShadow = ''; // Remove o brilho
+                isFlashing = false; // Desativa o brilho se o tempo for superior a 10 minutos
+            }
+        }, 1000);
+
     </script>
 </body>
 </html>
