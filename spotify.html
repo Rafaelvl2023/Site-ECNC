@@ -14,19 +14,19 @@
             background-color: #000;
             color: #fff;
         }
-
+    
         .spotify-container {
             display: flex;
             flex-direction: column;
             height: 100vh;
         }
-
+    
         @media (min-width: 768px) {
             .spotify-container {
                 flex-direction: row;
             }
         }
-
+    
         .sidebar {
             width: 100%;
             background-color: #121212;
@@ -35,24 +35,26 @@
             flex-direction: column;
             justify-content: space-between;
         }
-
+    
         @media (min-width: 768px) {
             .sidebar {
-                width: 25%;
+                position: fixed; /* Fixa a barra lateral em telas maiores */
+                height: 100vh; /* Ocupa toda a altura da janela */
+                width: 25%; /* Largura fixa para a barra lateral */
             }
         }
-
+    
         .sidebar .logo {
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 20px;
         }
-
+    
         .sidebar .menu h3 {
             font-size: 18px;
             margin-bottom: 10px;
         }
-
+    
         .sidebar button {
             display: block;
             width: 100%;
@@ -65,40 +67,48 @@
             cursor: pointer;
             text-align: left;
         }
-
+    
         .sidebar button a {
             color: #fff;
             text-decoration: none;
         }
-
+    
         .sidebar .footer {
             font-size: 12px;
             display: flex;
             flex-wrap: wrap;
             gap: 5px;
         }
-
+    
         .sidebar .footer a {
             color: #b3b3b3;
             text-decoration: none;
         }
-
+    
         .sidebar .footer .language {
             margin-top: 10px;
             font-size: 14px;
         }
-
+    
         .main-content {
             flex: 1;
             padding: 20px;
         }
-
+    
+        @media (min-width: 768px) {
+            .main-content {
+                margin-left: 25%; /* Espaço reservado para a barra lateral fixa */
+                overflow-y: auto; /* Permite rolagem no conteúdo principal */
+                height: 100vh;
+            }
+        }
+    
         .main-content header {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
+    
         .main-content .search-bar {
             width: 70%;
             padding: 10px;
@@ -107,7 +117,7 @@
             background-color: #333;
             color: #fff;
         }
-
+    
         .main-content .login-btn {
             padding: 10px 15px;
             background-color: #1db954;
@@ -116,12 +126,12 @@
             border-radius: 20px;
             cursor: pointer;
         }
-
+    
         .popular-artists,
         .popular-albums {
             margin-top: 20px;
         }
-
+    
         .popular-artists .artists-grid {
             display: flex;
             gap: 15px;
@@ -129,58 +139,61 @@
             scroll-behavior: smooth;
             padding-bottom: 10px;
         }
-
+    
         .popular-artists .artist {
             text-align: center;
             flex: 0 0 auto;
             width: 150px;
         }
-
+    
         .popular-artists .artist img {
             width: 100%;
             border-radius: 50%;
         }
-
+    
         .popular-artists .artist p {
             margin-top: 10px;
             font-size: 14px;
         }
-
-        /* Removendo o estilo do Flex e utilizando o sistema de grid do Bootstrap */
+    
+        /* Ajuste da grid de álbuns */
         .popular-albums .albums-grid {
             display: block;
         }
-
+    
         .popular-albums .album {
             text-align: center;
         }
-
+    
         .popular-albums .album img {
             width: 80%;
             border-radius: 10px;
         }
-
+    
         .popular-albums .album p {
             margin-top: 10px;
             font-size: 14px;
         }
-
+    
         .sidebar .footer-banner {
             text-align: center;
             padding: 10px;
             background-color: #1db954;
             margin-top: 20px;
         }
-
+    
         .artists-grid::-webkit-scrollbar {
             display: none;
         }
-
+    
         .artists-grid {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
     </style>
+    
+    
+    
 </head>
 
 <body>
