@@ -146,15 +146,13 @@
             font-size: 14px;
         }
 
+        /* Removendo o estilo do Flex e utilizando o sistema de grid do Bootstrap */
         .popular-albums .albums-grid {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
+            display: block;
         }
 
         .popular-albums .album {
             text-align: center;
-            flex: 1 0 calc(16.66% - 15px);
         }
 
         .popular-albums .album img {
@@ -244,79 +242,126 @@
 
             <section class="popular-albums">
                 <h2>Singles e álbuns que todo mundo gosta</h2>
-                <div class="albums-grid">
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>333 - Matuê</p>
+                <div class="row">
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>333 - Matuê</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>White Noise - Sleepy John</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>White Noise - Sleepy John</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>Manifesto Musical</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>Manifesto Musical</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>Barbie - MC Tuto</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>Barbie - MC Tuto</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>NUME - Filipe Ret</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>NUME - Filipe Ret</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>Obrigado Deus</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>Obrigado Deus</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>NUME - Filipe Ret</p>
+                    <!-- Adicione mais álbuns conforme necessário -->
+                </div>
+            </section>
+            <section class="popular-albums">
+                <div class="row">
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>333 - Matuê</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>Obrigado Deus</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>White Noise - Sleepy John</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>NUME - Filipe Ret</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>Manifesto Musical</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>Obrigado Deus</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>Barbie - MC Tuto</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>NUME - Filipe Ret</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>NUME - Filipe Ret</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>Obrigado Deus</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>Obrigado Deus</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>NUME - Filipe Ret</p>
+                    <!-- Adicione mais álbuns conforme necessário -->
+                </div>
+            </section>
+            <section class="popular-albums">
+                <div class="row">
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>333 - Matuê</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>Obrigado Deus</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>White Noise - Sleepy John</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>NUME - Filipe Ret</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>Manifesto Musical</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>Obrigado Deus</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>Barbie - MC Tuto</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>NUME - Filipe Ret</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>NUME - Filipe Ret</p>
+                        </div>
                     </div>
-                    <div class="album">
-                        <img src="https://via.placeholder.com/150" alt="Álbum">
-                        <p>Obrigado Deus</p>
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <div class="album text-center">
+                            <img src="https://via.placeholder.com/150" alt="Álbum">
+                            <p>Obrigado Deus</p>
+                        </div>
                     </div>
+                    <!-- Adicione mais álbuns conforme necessário -->
                 </div>
             </section>
         </main>
