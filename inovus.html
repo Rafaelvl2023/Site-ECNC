@@ -224,7 +224,23 @@
       font-weight: bold;
       font-size: 1.5rem;
       color: #000;
-      margin-bottom: 2rem;
+    }
+
+    .card-custom {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+    }
+
+    .card-custom img {
+      border-radius: 15px;
+      width: 100%;
+      height: auto;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
     }
   </style>
 </head>
@@ -337,10 +353,32 @@
     </div>
   </div>
   <div class="container text-center my-5">
-      <div class="col-md-12">
-        <p class="section-title">BUSCANDO SOLUÇÕES?</p>
-        <h2 class="section-subtitle">ENTREGAMOS O PACOTE COMPLETO!</h2>
+    <div class="col-md-12">
+      <p class="section-title">BUSCANDO SOLUÇÕES?</p>
+      <h2 class="section-subtitle">ENTREGAMOS O PACOTE COMPLETO!</h2>
+    </div>
+  </div>
+  <div class="container text-center my-5">
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <div class="card card-custom">
+          <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/2.png?resize=1024%2C1024&ssl=1"
+            alt="Ecn Supri">
+        </div>
       </div>
+      <div class="col-md-4">
+        <div class="card card-custom">
+          <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/1.png?resize=1024%2C1024&ssl=1"
+            alt="Ecn Sempre">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-custom">
+          <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/ecnc-supri.png?resize=1024%2C1024&ssl=1"
+            alt="Ecn Training">
+        </div>
+      </div>
+    </div>
   </div>
   <script>
     const menuToggle = document.getElementById('menu-toggle');
