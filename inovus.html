@@ -188,6 +188,8 @@
       box-shadow: 0 4px 35px rgba(0, 0, 0, 0.432);
     }
 
+
+
     @media (max-width: 768px) {
       nav {
         display: flex;
@@ -227,8 +229,8 @@
       }
 
       .card-custom img {
-      margin-top: 30px;
-    }
+        margin-top: 30px;
+      }
     }
   </style>
 </head>
@@ -362,41 +364,83 @@
       </div>
     </div>
   </div>
+  <style>
+    .clienteContainer h2 {
+      font-size: 2rem;
+      text-align: center;
+      color: rgba(0, 64, 160, 0.945);
+    }
+    .cliente,
+    .cliente2 {
+      background-color: rgb(252, 252, 252);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 150px;
+      width: 16.6%;
+    }
 
-  <div>
-    <h1>teste1</h1>
+    .cliente2 {
+      background-color: #c6e1ff6c;
+    }
+
+    .cliente img,
+    .cliente2 img {
+      height: 3rem;
+      width: 6rem;
+      object-fit: contain;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0px;
+      justify-content: space-evenly;
+    }
+
+    @media (max-width: 768px) {
+
+      .clienteContainer h2 {
+      font-size: 1.4rem;
+    }
+
+      .cliente,
+      .cliente2 {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .cliente,
+      .cliente2 {
+        width: 100%;
+      }
+    }
+  </style>
+  <div class="clienteContainer">
+    <h2>Alguns de nossos clientes</h1>
     <div class=" container d-flex">
-      <div>
-        <h1>teste</h1>
+      <div class="cliente">
+        <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2019/12/Bruden.png?resize=1024%2C263&ssl=1" alt="">
       </div>
-      <div>
-        <h1>teste</h1>
+      <div class="cliente2">
+        <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2019/12/TMC.png?resize=1024%2C672&ssl=1" alt="">
       </div>
-      <div>
-        <h1>teste</h1>
+      <div class="cliente">
+        <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2019/12/Sinteglas-1.png?resize=1024%2C267&ssl=1"
+          alt="">
       </div>
-      <div>
-        <h1>teste</h1>
+      <div class="cliente2">
+        <img
+          src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2019/12/logo-teclaser.png?zoom=2&resize=175%2C175&ssl=1"
+          alt="">
       </div>
-      <div>
-        <h1>teste</h1>
+      <div class="cliente">
+        <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2019/12/PH.png?resize=1000%2C1024&ssl=1" alt="">
       </div>
-    </div>
-    <div class=" container d-flex">
-      <div>
-        <h1>teste</h1>
-      </div>
-      <div>
-        <h1>teste</h1>
-      </div>
-      <div>
-        <h1>teste</h1>
-      </div>
-      <div>
-        <h1>teste</h1>
-      </div>
-      <div>
-        <h1>teste</h1>
+      <div class="cliente2">
+        <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2019/12/Maza.png?w=816&ssl=1" alt="">
       </div>
     </div>
   </div>
