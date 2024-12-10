@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inovus</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -87,7 +89,8 @@
 
     .parallax {
       height: 100vh;
-      background-image: url('https://compraco.com.br/cdn/shop/articles/maquina_corte_a_laser.jpg?v=1714075650&width=1100'); /* Substitua pelo caminho da imagem */
+      background-image: url('https://compraco.com.br/cdn/shop/articles/maquina_corte_a_laser.jpg?v=1714075650&width=1100');
+      /* Substitua pelo caminho da imagem */
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
@@ -114,9 +117,9 @@
         top: 60px;
         right: 0;
         width: 100%;
-        overflow: hidden; 
+        overflow: hidden;
         height: 0;
-        transition: height 0.3s ease; 
+        transition: height 0.3s ease;
       }
 
       nav ul {
@@ -135,7 +138,7 @@
       }
 
       nav.active {
-        height: 250px; 
+        height: 250px;
         opacity: 0.9;
       }
 
@@ -144,12 +147,95 @@
       }
     }
   </style>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+  </style>
+  <style>
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      border-radius: 10px 10px 0 0;
+      display: block;
+      /* Isso faz a imagem ser tratada como um bloco */
+      margin: 0 auto;
+      /* Centraliza horizontalmente */
+      max-width: 60%;
+      /* Garante que a imagem não exceda o tamanho do cartão */
+      height: auto;
+      /* Mantém a proporção da imagem */
+    }
+
+
+    .card-title {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .card-body {
+      flex-grow: 1;
+      /* Faz o corpo expandir para preencher o espaço disponível */
+    }
+
+    .btn-link {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  </style>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: #333;
+    }
+
+    .section-subtitle {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #000;
+      margin-bottom: 2rem;
+    }
+  </style>
 </head>
+
 <body>
   <header>
     <div class="container">
       <div class="logo">
-        <img src="https://ecnc.com.br/wp-content/uploads/elementor/thumbs/Ecnc-gray-e1709058834734-qkfs3s7n155exl61n2q45wnebt0ged4ktleg47ha6y.png" alt="Inovus Logo">
+        <img
+          src="https://ecnc.com.br/wp-content/uploads/elementor/thumbs/Ecnc-gray-e1709058834734-qkfs3s7n155exl61n2q45wnebt0ged4ktleg47ha6y.png"
+          alt="Inovus Logo">
       </div>
       <div class="menu-toggle" id="menu-toggle">
         <span></span>
@@ -172,6 +258,90 @@
     <h1>O futuro do corte a laser está aqui!</h1>
   </section>
 
+  <div class="container my-5">
+    <div class="row text-center">
+      <div class="col">
+        <p class="section-title">Ajudamos você a transformar ideias</p>
+        <h2 class="section-subtitle">EM GRANDES NEGÓCIOS</h2>
+        <p class="section-text mt-4">
+          Estamos na vanguarda da tecnologia, oferecendo uma ampla gama de máquinas de corte e gravação a laser para
+          atender a todas as suas necessidades de produção. Especializados em máquinas de corte a laser, destacamos
+          nossa expertise em dois produtos principais:
+        </p>
+        <div class="text-left mt-4">
+          <p class="section-text">
+            <strong>1. Máquinas de Corte a Laser para MDF, Acrílico, Tecido e materiais não metálicos:</strong>
+            Nossas máquinas de corte a laser são projetadas com a mais recente tecnologia, proporcionando cortes
+            precisos e limpos em materiais como MDF, acrílico e tecido. A versatilidade dessas máquinas permite que você
+            concretize suas ideias com detalhes impressionantes, independentemente do material escolhido.
+          </p>
+          <p class="section-text">
+            <strong>2. Máquinas de Gravação a Laser em Metais e Não Metais:</strong>
+            Transforme seus projetos com nossas máquinas de gravação a laser, capazes de personalizar metais e não
+            metais de maneira elegante e duradoura. Desde placas de identificação até itens decorativos, oferecemos
+            possibilidades ilimitadas para expressar sua criatividade, mantendo a qualidade e precisão em cada detalhe.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-4 mb-4 d-flex">
+        <div class="card w-100">
+          <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/08/BABY-CUT-PRICE.png?resize=278%2C300&ssl=1"
+            class="card-img-top" alt="Hobby">
+          <div class="card-body">
+            <h5 class="card-title">Hobby</h5>
+            <p class="card-text">L-6040 Price máquina de corte e gravação a laser de bancada. Esse modelo é ideal para
+              você que está iniciando sua empresa. Uma máquina compacta que atende todas as suas necessidades para um
+              fluxo baixo de trabalho.</p>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <a href="#" class="btn btn-link">L-6040 Price</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-4 mb-4 d-flex">
+        <div class="card w-100">
+          <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2022/01/L1060mini.png?w=640&ssl=1"
+            class="card-img-top" alt="Profissional">
+          <div class="card-body">
+            <h5 class="card-title">Profissional</h5>
+            <p class="card-text">Aqui você encontra uma ampla seleção de peças de reposição de alta qualidade para as
+              suas máquinas CNC de corte e gravação a laser. Através da nossa loja virtual você garante peças de
+              qualidade para manter o desempenho da sua máquina CNC.</p>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <a href="#" class="btn btn-link">Linha Pro</a>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-4 mb-4 d-flex">
+        <div class="card w-100">
+          <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/06/Chiller.jpg?resize=300%2C300&ssl=1"
+            class="card-img-top" alt="Peças e acessórios">
+          <div class="card-body">
+            <h5 class="card-title">Peças e acessórios</h5>
+            <p class="card-text">Temos uma loja virtual completa com peças e acessórios à um clique de distância com a
+              facilidade do parcelamento em 12 vezes no cartão e frete rápido.</p>
+          </div>
+          <div class="card-footer bg-white border-0">
+            <a href="#" class="btn btn-link">Loja virtual</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container text-center my-5">
+      <div class="col-md-12">
+        <p class="section-title">BUSCANDO SOLUÇÕES?</p>
+        <h2 class="section-subtitle">ENTREGAMOS O PACOTE COMPLETO!</h2>
+      </div>
+  </div>
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
@@ -181,4 +351,5 @@
     });
   </script>
 </body>
+
 </html>
