@@ -173,8 +173,19 @@
       transition: transform 0.2s;
     }
 
+    .card-custom img {
+      border-radius: 10px;
+      transform: translateY(-5px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.432);
+    }
+
     .card-custom:hover {
       transform: translateY(-5px);
+    }
+
+    .card-custom img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 35px rgba(0, 0, 0, 0.432);
     }
 
     @media (max-width: 768px) {
@@ -214,6 +225,10 @@
       .parallax h1 {
         font-size: 1.8rem;
       }
+
+      .card-custom img {
+      margin-top: 30px;
+    }
     }
   </style>
 </head>
