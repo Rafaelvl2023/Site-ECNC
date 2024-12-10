@@ -15,6 +15,7 @@
 
     body {
       font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
       line-height: 1.6;
     }
 
@@ -90,7 +91,6 @@
     .parallax {
       height: 100vh;
       background-image: url('https://compraco.com.br/cdn/shop/articles/maquina_corte_a_laser.jpg?v=1714075650&width=1100');
-      /* Substitua pelo caminho da imagem */
       background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
@@ -106,6 +106,75 @@
       font-size: 2.5rem;
       font-weight: bold;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card img {
+      border-radius: 10px 10px 0 0;
+      display: block;
+      margin: 0 auto;
+      max-width: 60%;
+      height: auto;
+    }
+
+    .card-title {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .card-body {
+      flex-grow: 1;
+    }
+
+    .btn-link {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    .section-title {
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: #333;
+    }
+
+    .section-subtitle {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #000;
+    }
+
+    .card-custom {
+      border-radius: 15px;
+      transition: transform 0.2s;
+    }
+
+    .card-custom:hover {
+      transform: translateY(-5px);
     }
 
     @media (max-width: 768px) {
@@ -145,102 +214,6 @@
       .parallax h1 {
         font-size: 1.8rem;
       }
-    }
-  </style>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-    }
-
-    .section-title {
-      font-weight: bold;
-      font-size: 1.5rem;
-    }
-
-    .section-subtitle {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .section-text {
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.8;
-    }
-  </style>
-  <style>
-    .card {
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card img {
-      border-radius: 10px 10px 0 0;
-      display: block;
-      /* Isso faz a imagem ser tratada como um bloco */
-      margin: 0 auto;
-      /* Centraliza horizontalmente */
-      max-width: 60%;
-      /* Garante que a imagem não exceda o tamanho do cartão */
-      height: auto;
-      /* Mantém a proporção da imagem */
-    }
-
-
-    .card-title {
-      font-weight: bold;
-      margin-top: 10px;
-    }
-
-    .card-body {
-      flex-grow: 1;
-      /* Faz o corpo expandir para preencher o espaço disponível */
-    }
-
-    .btn-link {
-      font-weight: bold;
-      text-decoration: underline;
-    }
-  </style>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f8f9fa;
-    }
-
-    .section-title {
-      font-weight: bold;
-      font-size: 1.25rem;
-      color: #333;
-    }
-
-    .section-subtitle {
-      font-weight: bold;
-      font-size: 1.5rem;
-      color: #000;
-    }
-
-    .card-custom {
-      border: none;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.2s;
-    }
-
-    .card-custom img {
-      border-radius: 15px;
-      width: 100%;
-      height: auto;
-    }
-
-    .card-custom:hover {
-      transform: translateY(-5px);
     }
   </style>
 </head>
@@ -359,27 +332,22 @@
     </div>
   </div>
   <div class="container text-center my-5">
-    <div class="row mt-5">
-      <div class="col-md-4">
-        <div class="card card-custom">
-          <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/2.png?resize=1024%2C1024&ssl=1"
-            alt="Ecn Supri">
-        </div>
+    <div class="row d-flex mt-0">
+      <div class="card-custom col-md-4">
+        <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/2.png?resize=1024%2C1024&ssl=1"
+          alt="Ecn Supri" style="width: 100%; height: auto;">
       </div>
-      <div class="col-md-4">
-        <div class="card card-custom">
-          <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/1.png?resize=1024%2C1024&ssl=1"
-            alt="Ecn Sempre">
-        </div>
+      <div class="card-custom col-md-4">
+        <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/1.png?resize=1024%2C1024&ssl=1"
+          alt="Ecn Sempre" style="width: 100%; height: auto;">
       </div>
-      <div class="col-md-4">
-        <div class="card card-custom">
-          <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/ecnc-supri.png?resize=1024%2C1024&ssl=1"
-            alt="Ecn Training">
-        </div>
+      <div class="card-custom col-md-4">
+        <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/ecnc-supri.png?resize=1024%2C1024&ssl=1"
+          alt="Ecn Training" style="width: 100%; height: auto;">
       </div>
     </div>
   </div>
+
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const menu = document.getElementById('menu');
