@@ -124,6 +124,23 @@
             margin-bottom: 3rem;
         }
 
+        .btn-details {
+            background: linear-gradient(to bottom, #b2dbff, #1a5ea3, #2a9cff); 
+            color: white;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-details:hover {
+            background-color: #155a90;
+        }
+
         @media (max-width: 1024px) {
             .hero-content {
                 flex-direction: column;
@@ -175,6 +192,7 @@
             .project img {
                 width: 100%;
                 height: auto;
+                margin-top: -30px;
             }
 
             .project-info h3 {
@@ -185,6 +203,10 @@
                 font-size: 0.9rem;
                 margin-bottom: -30px;
             }
+
+            .btn-details {
+                margin-top: 40px;
+            }
         }
     </style>
 </head>
@@ -193,7 +215,8 @@
 
     <header class="hero">
         <div class="hero-content">
-            <img src="https://img.freepik.com/fotos-gratis/retrato-de-homem-branco-isolado_53876-40306.jpg" alt="Minha Foto" class="perfil-foto">
+            <img src="https://img.freepik.com/fotos-gratis/retrato-de-homem-branco-isolado_53876-40306.jpg"
+                alt="Minha Foto" class="perfil-foto">
             <div class="hero-info">
                 <h1>Desenvolvedor Laravel</h1>
                 <p>Especialista em desenvolvimento web utilizando PHP, Laravel, MySQL e mais. Experiência em
@@ -209,8 +232,11 @@
             <div class="project-info">
                 <h3>Projeto 1</h3>
                 <h4>Clone da Tela do App Spotify</h4>
-                <p>Desenvolvimento de uma interface inspirada no aplicativo Spotify para demonstrar habilidades em Front-End, incluindo design responsivo, uso de tecnologias modernas como HTML, CSS e JavaScript, e atenção aos detalhes visuais e funcionais.
+                <p>Desenvolvimento de uma interface inspirada no aplicativo Spotify para demonstrar habilidades em
+                    Front-End, incluindo design responsivo, uso de tecnologias modernas como HTML, CSS e JavaScript, e
+                    atenção aos detalhes visuais e funcionais.
                 </p>
+                <button class="btn-details mt-5">Ver Detalhes</button>
             </div>
         </div>
         <div class="project">
@@ -218,7 +244,11 @@
             <div class="project-info">
                 <h3>Projeto 2</h3>
                 <h4>Dashboard Corporativa</h4>
-                <p>Sistema de gerenciamento corporativo desenvolvido com Laravel 10 e Blade para o Front-End. A plataforma monitora gastos financeiros, despesas de recursos humanos e custos logísticos, apresentando gráficos e relatórios interativos para facilitar a análise e a tomada de decisões empresariais.</p>
+                <p>Sistema de gerenciamento corporativo desenvolvido com Laravel 10. A plataforma monitora gastos
+                    financeiros, despesas de recursos humanos e custos logísticos, apresentando gráficos e relatórios
+                    interativos para facilitar a análise e a tomada de decisões empresariais.
+                </p>
+                <button class="btn-details mt-5">Ver Detalhes</button>
             </div>
         </div>
         <div class="project">
@@ -226,7 +256,11 @@
             <div class="project-info">
                 <h3>Projeto 3</h3>
                 <h4>Gerenciamento de Agendamentos</h4>
-                <p>Aplicação completa para agendamentos de serviços em salões de beleza. Clientes podem criar contas e agendar serviços, enquanto os proprietários gerenciam agendamentos por meio de uma interface administrativa, com autenticação segura e gerenciamento eficiente de dados.</p>
+                <p>Aplicação completa para agendamentos de serviços em salões de beleza. Clientes podem criar contas e
+                    agendar serviços, enquanto a proprietária gerencia agendamentos por meio de uma interface
+                    administrativa, com autenticação segura e gerenciamento eficiente de dados.
+                </p>
+                <button class="btn-details mt-5">Ver Detalhes</button>
             </div>
         </div>
         <div class="project">
@@ -234,7 +268,11 @@
             <div class="project-info">
                 <h3>Projeto 4</h3>
                 <h4>Gerenciamento Contatos</h4>
-                <p>Sistema completo de gerenciamento de contatos, incluindo uma tela pública para exibir contatos cadastrados e uma área de login para usuários registrados. As funções principais incluem cadastro, edição e exclusão de contatos, com uma interface intuitiva e segurança reforçada.</p>
+                <p>Sistema completo de gerenciamento de contatos, incluindo uma tela pública para exibir contatos
+                    cadastrados e uma área de login para usuários registrados. As funções principais incluem cadastro,
+                    edição e exclusão de contatos, com uma interface intuitiva e segurança reforçada.
+                </p>
+                <button class="btn-details mt-5">Ver Detalhes</button>
             </div>
         </div>
         <div class="project">
@@ -242,7 +280,11 @@
             <div class="project-info">
                 <h3>Projeto 5</h3>
                 <h4>Modelagem de Banco de Dados Relacional</h4>
-                <p>Desenvolvimento de um diagrama de banco de dados relacional no MySQL Workbench, destacando habilidades em modelagem de dados, definição de relacionamentos entre tabelas e criação de estruturas robustas e escaláveis para aplicações complexas.</p>
+                <p>Desenvolvimento de um diagrama de banco de dados relacional no MySQL Workbench, destacando
+                    habilidades em modelagem de dados, definição de relacionamentos entre tabelas e criação de
+                    estruturas robustas e escaláveis para aplicações complexas.
+                </p>
+                <button class="btn-details mt-5">Ver Detalhes</button>
             </div>
         </div>
     </section>
