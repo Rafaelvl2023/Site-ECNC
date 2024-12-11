@@ -42,6 +42,10 @@
             z-index: 1000;
         }
 
+        h3 {
+            text-align: center;
+        }
+
         h3,
         h4 {
             color: #2c3e50;
@@ -53,8 +57,15 @@
         p,
         li {
             color: #7f8c8d;
-            font-size: 16px;
             line-height: 1.7;
+            letter-spacing: 0.5px;
+        }
+
+        p strong,
+        li strong {
+            font-size: 20px;
+            color: #002f5e;
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
 
@@ -81,7 +92,8 @@
 
         .project-details p {
             font-size: 18px;
-            color: #7f8c8d;
+            font-weight: bold;
+            color: #5a5353;
             margin-bottom: 20px;
         }
 
@@ -92,8 +104,8 @@
         }
 
         .project-details li {
-            font-size: 16px;
-            color: #7f8c8d;
+            font-size: 17px;
+            color: #4b4b4b;
         }
 
         .text-center img {
@@ -130,6 +142,43 @@
             flex-wrap: wrap;
             gap: 30px;
             justify-content: space-between;
+        }
+
+        .contact-message {
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #ddd;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-top: 50px;
+        }
+
+        .contact-message:hover {
+            background-color: #f1f1f1;
+            color: rgb(0, 2, 97);
+            border-color: #00375f;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-message a {
+            color: #2980b9;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-message a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .contact-message strong {
+            color: #2980b9;
         }
 
         @media (max-width: 768px) {
@@ -246,7 +295,8 @@
     <div class="container">
         <div class="project-details">
             <h3>Clone da Tela do App Spotify</h3>
-            <p>Este projeto, desenvolvido com HTML e CSS, demonstra minhas habilidades em desenvolvimento
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Este projeto, desenvolvido com HTML e CSS, demonstra minhas habilidades em
+                desenvolvimento
                 front-end através da recriação da interface do Spotify.</p>
             <ul>
                 <li><strong>Barra Lateral:</strong> Navegação fixa em telas maiores e ajustável em dispositivos móveis.
@@ -255,11 +305,17 @@
                 <li><strong>Design Responsivo:</strong> Layout ajustável para diferentes tamanhos de tela com animações
                     suaves.</li>
             </ul>
-            <p>Este projeto destaca minha capacidade de criar interfaces modernas, interativas e funcionais inspiradas
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Este projeto destaca minha capacidade de criar interfaces modernas, interativas e
+                funcionais inspiradas
                 na experiência visual do Spotify.</p>
             <div class="text-center mt-4">
                 <img src="img/spotify.PNG" alt="Imagem da interface do projeto Spotify">
             </div>
+            <h5 class="contact-message">
+                Se você deseja conhecer mais a fundo o código e as funcionalidades deste projeto, estou à disposição para compartilhar o repositório no GitHub com mais detalhes.
+                <hr><strong>Fique à vontade para entrar em contato comigo pelo WhatsApp e discutirmos como posso agregar
+                    valor a sua equipe!</strong>
+            </h5>
         </div>
     </div>
 

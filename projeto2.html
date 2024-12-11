@@ -42,6 +42,10 @@
             z-index: 1000;
         }
 
+        h3 {
+            text-align: center;
+        }
+
         h3,
         h4 {
             color: #2c3e50;
@@ -53,8 +57,15 @@
         p,
         li {
             color: #7f8c8d;
-            font-size: 16px;
             line-height: 1.7;
+            letter-spacing: 0.5px;
+        }
+
+        p strong,
+        li strong {
+            font-size: 20px;
+            color: #002f5e;
+            font-weight: 600;
             letter-spacing: 0.5px;
         }
 
@@ -81,7 +92,8 @@
 
         .project-details p {
             font-size: 18px;
-            color: #7f8c8d;
+            font-weight: bold;
+            color: #5a5353;
             margin-bottom: 20px;
         }
 
@@ -92,8 +104,8 @@
         }
 
         .project-details li {
-            font-size: 16px;
-            color: #7f8c8d;
+            font-size: 17px;
+            color: #4b4b4b;
         }
 
         .text-center img {
@@ -130,6 +142,43 @@
             flex-wrap: wrap;
             gap: 30px;
             justify-content: space-between;
+        }
+
+        .contact-message {
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #ddd;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-top: 50px;
+        }
+
+        .contact-message:hover {
+            background-color: #f1f1f1;
+            color: rgb(0, 2, 97);
+            border-color: #00375f;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-message a {
+            color: #2980b9;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-message a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .contact-message strong {
+            color: #2980b9;
         }
 
         @media (max-width: 768px) {
@@ -246,18 +295,51 @@
     <div class="container">
         <div class="project-details">
             <h3>Dashboard para Análise de Dados</h3>
-            <p>Este projeto é uma dashboard desenvolvida para monitoramento e análise de dados financeiros, de recursos humanos (RH) e logísticos. A aplicação permite aos usuários visualizar, de forma clara e interativa, os principais indicadores de custos dessas áreas, ajudando na tomada de decisões estratégicas.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Este projeto é uma dashboard desenvolvida em Laravel para monitoramento e análise de dados
+                financeiros, recursos
+                humanos (RH) e logísticos. A aplicação permite aos usuários visualizar, de forma clara e interativa, os
+                principais indicadores de custos dessas áreas, ajudando na tomada de decisões estratégicas.</p>
             <ul>
-                <li><strong>Cards Interativos:</strong> 12 cards distribuídos em três categorias (Financeiro, RH, Logística), com informações como total de registros, soma dos gastos, média de gastos e maior valor registrado em cada área.</li>
-                <li><strong>Filtros Personalizados:</strong> Possibilidade de filtrar os dados por ano, mês ou período, permitindo uma análise detalhada e ajustada conforme a necessidade.</li>
-                <li><strong>Gráficos Dinâmicos:</strong> Gráfico Houghnout para mostrar a distribuição dos valores de cada área, e gráfico Radar para visualizar a performance ao longo dos meses do ano, com linhas separadas para financeiro, RH e logística.</li>
-                <li><strong>Gráfico de Barras por Estado:</strong> Um gráfico de barras localizado no lado direito da dashboard, que exibe os gastos totais financeiros, RH e logísticos por estado do Brasil. Esse gráfico facilita a comparação entre diferentes regiões e permite entender as variações de custos em cada localidade.</li>
-                <li><strong>Filtros Específicos para Gráficos:</strong> Cada gráfico possui um filtro que permite ajustar os dados para cada categoria (financeiro, RH ou logística), garantindo uma análise detalhada e específica de cada área.</li>
+                <li><strong>Cards Interativos:</strong> 12 cards distribuídos em três categorias (Financeiro, RH,
+                    Logística), com informações como total de registros, soma dos gastos, média de gastos e maior valor
+                    registrado em cada área.</li>
+                <li><strong>Filtros Personalizados:</strong> Possibilidade de filtrar os dados por ano, mês ou período,
+                    permitindo uma análise detalhada e ajustada conforme a necessidade.</li>
+                <li><strong>Gráficos Dinâmicos:</strong> Gráfico Houghnout para mostrar a distribuição dos valores de
+                    cada área, e gráfico Radar para visualizar a performance ao longo dos meses do ano, com linhas
+                    separadas para financeiro, RH e logística.</li>
+                <li><strong>Gráfico de Barras por Estado:</strong> Um gráfico de barras localizado no lado direito da
+                    dashboard, que exibe os gastos totais financeiros, RH e logísticos por estado do Brasil. Esse
+                    gráfico facilita a comparação entre diferentes regiões e permite entender as variações de custos em
+                    cada localidade.</li>
+                <li><strong>Filtros Específicos para Gráficos:</strong> Cada gráfico possui um filtro que permite
+                    ajustar os dados para cada categoria (financeiro, RH ou logística), garantindo uma análise detalhada
+                    e específica de cada área.</li>
+                <li><strong>Desempenho e Escalabilidade:</strong> O sistema foi desenvolvido com foco em performance,
+                    utilizando o poder do Laravel 10 para garantir um backend rápido e responsivo, que lida com grandes
+                    volumes de dados de forma eficiente. A estrutura modular permite fácil expansão e adição de novas
+                    funcionalidades.</li>
+                <li><strong>Arquitetura MVC:</strong> Todo o backend foi desenvolvido seguindo os padrões de
+                    <strong>MVC</strong>, com rotinas bem definidas para controle de dados (Model), lógica de negócios
+                    (Controller) e apresentação (View). Isso assegura que o sistema seja fácil de manter e evoluir ao
+                    longo do tempo.
+                </li>
+                <li><strong>Segurança e Autenticação:</strong> O sistema foi implementado com rigorosos controles de
+                    segurança, incluindo autenticação de usuários, validação de dados e permissões, utilizando as
+                    poderosas funcionalidades nativas do Laravel.</li>
             </ul>
-            <p>Este projeto destaca minhas habilidades em análise de dados e desenvolvimento de dashboards interativas, utilizando gráficos avançados e filtros dinâmicos para apresentar informações complexas de maneira acessível e intuitiva.</p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;Este projeto destaca minhas habilidades em análise de dados e desenvolvimento de
+                dashboards interativas,
+                utilizando gráficos avançados e filtros dinâmicos para apresentar informações complexas de maneira
+                acessível e intuitiva.</p>
             <div class="text-center mt-4">
                 <img src="img/dahboard3.jpeg" alt="Imagem da interface da dashboard de análise de dados">
             </div>
+            <h5 class="contact-message">
+                Se você deseja conhecer mais a fundo o código e as funcionalidades deste projeto, estou à disposição para compartilhar o repositório no GitHub com mais detalhes.
+                <hr><strong>Fique à vontade para entrar em contato comigo pelo WhatsApp e discutirmos como posso agregar
+                    valor a sua equipe!</strong>
+            </h5>
         </div>
     </div>
 
