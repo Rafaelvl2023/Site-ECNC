@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio Laravel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -79,6 +80,19 @@
             line-height: 1.8;
         }
 
+        .icon-3deffects {
+            font-size: 40px;
+            color: #333;
+            margin-top: 10px;
+            transition: transform 0.3s ease, color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icon-3deffects:hover {
+            transform: scale(1.2);
+            color: #25d366;
+        }
+
         .projects {
             max-width: 1200px;
             margin: 3rem auto;
@@ -87,6 +101,7 @@
 
         .projects h2 {
             text-align: center;
+            font-size: 2rem;
             margin-bottom: 2rem;
             color: #444444;
         }
@@ -263,6 +278,18 @@
                 margin-bottom: -30px;
             }
 
+            .cv {
+                text-align: center;
+            }
+
+            .icon-3deffects {
+                font-size: 33px;
+                color: #333;
+                margin-top: 15px;
+                transition: transform 0.3s ease, color 0.3s ease;
+                cursor: pointer;
+            }
+
             .btn-details {
                 margin-top: 40px;
             }
@@ -293,6 +320,11 @@
                 <p>Especialista em desenvolvimento web utilizando PHP, Laravel, MySQL e mais. Experiência em
                     desenvolvimento de aplicações robustas e escaláveis.
                 </p>
+                <div class="cv">
+                    <a href="seu-link-de-curriculo.pdf" target="_blank">
+                        <i class="fas fa-file-alt icon-3deffects" title="Currículo"> Currículo</i>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
