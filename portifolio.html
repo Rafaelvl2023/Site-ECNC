@@ -144,6 +144,62 @@
             background-color: #155a90;
         }
 
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            background-color: #25d366;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 2rem;
+            color: white;
+            transition: background-color 0.2s ease;
+            animation: glow 3s infinite, grow 2s infinite;
+        }
+
+        .whatsapp-icon img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.2s ease;
+        }
+
+        .whatsapp-icon:hover {
+            background-color: #128c7e;
+        }
+
+        @keyframes grow {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 20px rgba(76, 63, 255, 0.884);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgb(76, 63, 255);
+            }
+
+            100% {
+                box-shadow: 0 0 20px rgba(76, 63, 255, 0.856);
+            }
+        }
+
         @media (max-width: 1024px) {
             .hero-content {
                 flex-direction: column;
@@ -210,6 +266,18 @@
             .btn-details {
                 margin-top: 40px;
             }
+
+            .whatsapp-icon {
+                bottom: 20px;
+                right: 20px;
+                height: 60px;
+                width: 60px;
+            }
+
+            .whatsapp-icon img {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
@@ -223,7 +291,8 @@
             <div class="hero-info">
                 <h1>Desenvolvedor Full Stack</h1>
                 <p>Especialista em desenvolvimento web utilizando PHP, Laravel, MySQL e mais. Experiência em
-                    desenvolvimento de aplicações robustas e escaláveis.</p>
+                    desenvolvimento de aplicações robustas e escaláveis.
+                </p>
             </div>
         </div>
     </header>
@@ -246,7 +315,7 @@
             <img src="img/dahboard3.jpeg" alt="Projeto 2">
             <div class="project-info">
                 <h3>Projeto 2</h3>
-                <h4>Dashboard Corporativa</h4>
+                <h4>Análise de Dados</h4>
                 <p>Sistema de gerenciamento corporativo desenvolvido com Laravel 10. A plataforma monitora gastos
                     financeiros, despesas de recursos humanos e custos logísticos, apresentando gráficos e relatórios
                     interativos para facilitar a análise e a tomada de decisões empresariais.
@@ -291,6 +360,13 @@
             </div>
         </div>
     </section>
+    <a href="https://wa.me/5514982280094" target="_blank" class="whatsapp-icon">
+        <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-01-512.png" alt="WhatsApp">
+    </a>
+
+    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-icon">
+        <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-01-512.png" alt="WhatsApp">
+    </a>
 </body>
 
 </html>
