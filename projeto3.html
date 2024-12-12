@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            padding-top: 40px;
+            padding-bottom: 20px;
+        }
+
+        .navbar-custom {
+            background: linear-gradient(to bottom, #6e767e, #303438, #52585e);
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .nav-link {
+            color: #fff;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: #f8f9fa;
+        }
+
+        .nav li {
+            font-size: 20px;
+        }
+
+        .fixed-top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        h3,
+        h4 {
+            color: #2c3e50;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        p,
+        li {
+            color: #7f8c8d;
+            line-height: 1.7;
+            letter-spacing: 0.5px;
+        }
+
+        p strong,
+        li strong {
+            font-size: 20px;
+            color: #002f5e;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .project-details {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .project-details:hover {
+            box-shadow: 0 8px 50px rgba(0, 0, 0, 0.575);
+            transform: translateY(-5px);
+        }
+
+        .project-details h3 {
+            font-size: 30px;
+            color: #2c3e50;
+            border-bottom: 2px solid #2c3e50;
+            padding-bottom: 10px;
+        }
+
+        .project-details p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #5a5353;
+            margin-bottom: 20px;
+        }
+
+        .project-details ul {
+            padding-left: 1.5rem;
+            list-style-type: disc;
+            margin-bottom: 20px;
+        }
+
+        .project-details li {
+            font-size: 17px;
+            color: #4b4b4b;
+        }
+
+        .text-center img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .text-center img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn {
+            background-color: #3498db;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
+
+        .contact-message {
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #ddd;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-top: 50px;
+        }
+
+        .contact-message:hover {
+            background-color: #f1f1f1;
+            color: rgb(0, 2, 97);
+            border-color: #00375f;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-message a {
+            color: #2980b9;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-message a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        .contact-message strong {
+            color: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            .project-details {
+                padding: 20px;
+            }
+
+            .project-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .text-center img {
+                max-width: 90%;
+            }
+        }
+
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            background-color: #25d366;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 2rem;
+            color: white;
+            transition: background-color 0.2s ease;
+            animation: glow 3s infinite, grow 2s infinite;
+        }
+
+        .whatsapp-icon img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.2s ease;
+        }
+
+        .whatsapp-icon:hover {
+            background-color: #128c7e;
+        }
+
+        @keyframes grow {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 20px rgba(76, 63, 255, 0.884);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgb(76, 63, 255);
+            }
+
+            100% {
+                box-shadow: 0 0 20px rgba(76, 63, 255, 0.856);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .icon-3deffects {
+                font-size: 33px;
+                color: #333;
+                margin-top: 15px;
+                transition: transform 0.3s ease, color 0.3s ease;
+                cursor: pointer;
+            }
+
+            .btn-details {
+                margin-top: 40px;
+            }
+
+            .whatsapp-icon {
+                bottom: 20px;
+                right: 20px;
+                height: 60px;
+                width: 60px;
+            }
+
+            .whatsapp-icon img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Meu Projeto</a>
+            <ul class="navbar-nav ml-auto d-flex">
+                <li class="nav-item">
+                    <a class="nav-link" href="portifolio.html">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="project-details">
+            <h3>Gerenciamento de Agendamentos</h3>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;O Sistema de Gerenciamento de Agendamentos para Salão de Beleza
+                desenvolvido em
+                <img src="img/laravel.png" alt="" style="width: 20px; padding-bottom: 5px;">
+                <img src="img/textoLaravel.png" alt="" style="width: 60px; padding-bottom: 3px;">
+                permite que clientes se cadastrem e agendem serviços, podendo editar seus agendamentos desde que faltem
+                mais de dois dias para o atendimento.
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;O proprietário do salão possui acesso administrador, com
+                privilégios para cadastrar, editar e excluir serviços oferecidos. Apenas o administrador tem permissão
+                para excluir agendamentos, garantindo controle total sobre o gerenciamento dos serviços e agendamentos
+                no sistema.
+            </p>
+            <ul>
+                <li><strong>Login e Registro:</strong>
+                    <ul>
+                        <li><strong>Tela de Login:</strong> O administrador (Leila) acessa o painel administrativo
+                            utilizando o e-mail <em>leila@gmail.com</em> e a senha <em>Gestao@2024</em>.</li>
+                        <li><strong>Tela de Registro:</strong> Destinada aos clientes do salão, onde podem registrar
+                            seus agendamentos para serviços de beleza.</li>
+                    </ul>
+                </li>
+                <li><strong>Agendamentos de Clientes:</strong>
+                    <ul>
+                        <li><strong>Cadastro de Agendamentos:</strong> O cliente pode agendar serviços no salão. Se o
+                            cliente já tiver um agendamento para a mesma semana, o sistema oferecerá a opção de editar o
+                            agendamento existente ou cadastrar um novo no mesmo horário/data.</li>
+                        <li><strong>Edição de Agendamentos:</strong> O cliente só poderá editar os agendamentos se
+                            faltarem mais de dois dias para o atendimento. Caso contrário, a edição não será permitida.
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>Acesso do Administrador:</strong>
+                    <ul>
+                        <li><strong>Tela Admin (Leila):</strong> O acesso do administrador leva à tela de dashboard,
+                            onde é possível visualizar os agendamentos, dados financeiros do salão e outras informações
+                            do negócio.</li>
+                        <li><strong>Cadastro de Serviços:</strong> O administrador pode cadastrar serviços oferecidos
+                            pelo salão, incluindo preços e descrição.</li>
+                    </ul>
+                </li>
+                <li><strong>Estrutura de Diretórios:</strong>
+                    <ul>
+                        <li><strong>app/:</strong> Contém os arquivos principais do seu aplicativo, incluindo
+                            controladores, modelos e serviços.</li>
+                        <li><strong>database/:</strong> Contém migrações, seeds e fábricas.</li>
+                        <li><strong>resources/views/:</strong> Contém as views Blade do sistema.</li>
+                        <li><strong>routes/:</strong> Contém as rotas da aplicação.</li>
+                    </ul>
+                </li>
+                <li><strong>Segurança e Autenticação:</strong> O sistema foi implementado com rigorosos controles de
+                    segurança, incluindo autenticação de usuários, validação de dados e permissões, utilizando as
+                    poderosas funcionalidades nativas do Laravel.</li>
+                <li><strong>Documentação Completa:</strong> O sistema está completamente documentado no arquivo README,
+                    com todas as instruções necessárias para rodar o projeto. A documentação inclui orientações
+                    detalhadas para executar as migrations e seeders, garantindo que o ambiente de desenvolvimento
+                    esteja corretamente configurado.</li>
+            </ul>
+
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;O sistema foi projetado para ser fácil de usar, com ênfase em uma navegação
+                simples e funcionalidades bem definidas, garantindo uma experiência agradável tanto para os visitantes
+                quanto para os usuários registrados.</p>
+            <div class="text-center mt-4">
+                <img src="img/Imagens Projeto 3/img1.png" alt="Imagem da interface da dashboard de análise de dados">
+            </div>
+            <div class="text-center mt-4">
+                <img src="img/Imagens Projeto 3/img2.png" alt="Imagem da interface da dashboard de análise de dados">
+            </div>
+            <div class="text-center mt-4">
+                <img src="img/Imagens Projeto 3/img3.png" alt="Imagem da interface da dashboard de análise de dados">
+            </div>
+            <div class="text-center mt-4">
+                <img src="img/Imagens Projeto 3/img4.png" alt="Imagem da interface da dashboard de análise de dados">
+            </div>
+            <div class="text-center mt-4">
+                <img src="img/Imagens Projeto 3/img5.png" alt="Imagem da interface da dashboard de análise de dados">
+            </div>
+            <h5 class="contact-message">
+                Se você deseja conhecer mais a fundo o código e as funcionalidades deste projeto, estou à disposição
+                para compartilhar o repositório no GitHub com mais detalhes.
+                <hr><strong>Fique à vontade para entrar em contato comigo pelo WhatsApp e discutirmos como posso agregar
+                    valor a sua equipe!</strong>
+            </h5>
+        </div>
+    </div>
+
+    <a href="https://wa.me/5514982280094" target="_blank" class="whatsapp-icon">
+        <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-01-512.png" alt="WhatsApp">
+    </a>
+
+    <a href="https://wa.me/5511999999999" target="_blank" class="whatsapp-icon">
+        <img src="https://cdn3.iconfinder.com/data/icons/social-network-30/512/social-01-512.png" alt="WhatsApp">
+    </a>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXlHjAA6H6sV+bJ9jaG2M3KFuZTz8dM3SgOEtp3AcT1TVACiFIr61wKz6jOD"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+dKMCqFZKObyMOEk69S7U2zLs5UxL5qa/5D5q2mRja4epmI5H"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
