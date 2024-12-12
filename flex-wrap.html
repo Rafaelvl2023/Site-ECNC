@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    background: lightgray;
+}
+
+.item {
+    background: steelblue;
+    color: white;
+    padding: 20px;
+    width: 150px;
+    text-align: center;
+}
+
+/* Quando a largura da tela for menor que 600px */
+@media (max-width: 600px) {
+    .flex-container {
+        flex-direction: column; /* Coloca um item embaixo do outro */
+        align-items: center;   /* Centraliza horizontalmente */
+    }
+
+    .item {
+        width: 90%; /* Ocupa 90% da largura da tela */
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+    </div>
+</body>
+
+</html>
