@@ -328,11 +328,12 @@
                 <img src="img/workbenchIcon.png" alt="" style="width: 25px; padding-bottom: 5px;">
                 <img src="img/mysqlIcon5.png" alt="" style="width: 65px; padding-bottom: 0px;">
                 Workbench com foco em desenvolver uma estrutura de dados eficiente e escalável para um sistema de gestão
-                empresarial. 
+                empresarial.
                 <br>
-                &nbsp;&nbsp;&nbsp;&nbsp;O sistema foi projetado para monitorar e gerenciar gastos, receitas e registrar informações
+                &nbsp;&nbsp;&nbsp;&nbsp;O sistema foi projetado para monitorar e gerenciar gastos, receitas e registrar
+                informações
                 dos funcionários, atendendo às necessidades do setor de Recursos Humanos (RH), além de fornecer uma
-                visão detalhada dos custos Logísticos. 
+                visão detalhada dos custos Logísticos.
                 <br>
                 &nbsp;&nbsp;&nbsp;&nbsp;A solução permite que a gestão tenha controle completo sobre as
                 despesas operacionais, otimização de recursos e acompanhamento contínuo dos fluxos financeiros e
@@ -340,33 +341,44 @@
             </p>
             <ul>
                 <li><strong>Cadastro_Empresa:</strong> Armazena os dados básicos das empresas, como nome, CNPJ, endereço
-                    e contato. Esta tabela é a base do sistema, com a chave primária idCadastro_Empresa.</li>
-                <li><strong>Contas_Bancarias:</strong> Relacionada à tabela Cadastro_Empresa, mantém informações
-                    bancárias das empresas, como número de conta, agência e saldo. O relacionamento com Cadastro_Empresa
-                    é realizado através da chave estrangeira Cadastro_Empresa_idCadastro_Empresa.</li>
-                <li><strong>Funcionarios:</strong> Contém os dados dos funcionários da empresa, incluindo nome, CPF,
-                    cargo e salário. A tabela tem uma chave estrangeira que a vincula à tabela Cadastro_Empresa.</li>
+                    e contato. Esta tabela é a base do sistema, com a chave primária `idCadastro_Empresa`. É a tabela
+                    central que mantém as informações essenciais sobre a empresa.</li>
+                <li><strong>Contas_Bancarias:</strong> Relacionada à tabela `Cadastro_Empresa`, mantém informações
+                    bancárias das empresas, como número de conta, agência e saldo. O relacionamento com
+                    `Cadastro_Empresa` é realizado através da chave estrangeira `Cadastro_Empresa_idCadastro_Empresa`.
+                    Esta tabela garante que cada empresa tenha informações bancárias associadas.</li>
                 <li><strong>Usuarios:</strong> Destina-se ao gerenciamento de usuários da plataforma, com informações de
-                    login e níveis de acesso. Esta tabela também se relaciona com a Cadastro_Empresa para garantir que
-                    os usuários pertencem a uma empresa específica.</li>
+                    login e níveis de acesso. Esta tabela também se relaciona com a `Cadastro_Empresa` para garantir que
+                    os usuários pertencem a uma empresa específica e possam acessar os dados corretamente.</li>
+                <li><strong>Logistica:</strong> Armazena informações logísticas essenciais para o funcionamento da
+                    empresa, como o gerenciamento de transporte, estoque e distribuição. Ela pode incluir dados como a
+                    quantidade de produtos em estoque, horários de entrega, e a localização dos itens. Essa tabela se
+                    relaciona com a tabela `Cadastro_Empresa` para garantir que as operações logísticas estejam
+                    associadas a uma empresa específica, garantindo eficiência na movimentação de recursos e controle do
+                    inventário.</li>
+                <li><strong>Funcionarios:</strong> Contém os dados dos funcionários da empresa, incluindo nome, CPF,
+                    cargo e salário. A tabela tem uma chave estrangeira que a vincula à tabela `Cadastro_Empresa`,
+                    garantindo que cada funcionário esteja associado a uma empresa específica.</li>
                 <li><strong>Folha_Pagamento:</strong> Registra as informações de pagamento de salários dos funcionários,
                     incluindo salário base, descontos, bônus e salários líquidos. A relação com os funcionários é
-                    mantida através das chaves estrangeiras associadas a funcionarios_idfuncionarios e
-                    funcionarios_Cadastro_Empresa_idCadastro_Empresa.</li>
+                    mantida através das chaves estrangeiras associadas a `funcionarios_idfuncionarios` e
+                    `funcionarios_Cadastro_Empresa_idCadastro_Empresa`, permitindo o controle financeiro do pagamento de
+                    salários.</li>
                 <li><strong>Licencas:</strong> Registra as licenças dos funcionários, com informações sobre o tipo, data
-                    de início e término, e status. Relacionada à tabela funcionarios, garante o controle das ausências
-                    dos funcionários.</li>
+                    de início e término, e status. Relacionada à tabela `Funcionarios`, garante o controle das ausências
+                    dos funcionários e o cumprimento da legislação trabalhista.</li>
                 <li><strong>Despesas e Receitas:</strong> Estas tabelas são responsáveis por registrar as transações
                     financeiras da empresa, separadas por tipo e categoria. Elas se relacionam com a tabela
-                    Cadastro_Empresa para garantir que as despesas e receitas estejam associadas a uma empresa
-                    específica.</li>
+                    `Cadastro_Empresa` para garantir que as despesas e receitas estejam associadas a uma empresa
+                    específica e possam ser analisadas de forma detalhada.</li>
                 <li><strong>Impostos e Beneficios:</strong> Controlam as obrigações fiscais e os benefícios oferecidos
                     aos funcionários, respectivamente. Essas tabelas também têm relações de chave estrangeira com
-                    Cadastro_Empresa e funcionarios, garantindo o acompanhamento adequado dos impostos pagos e
+                    `Cadastro_Empresa` e `Funcionarios`, garantindo o acompanhamento adequado dos impostos pagos e
                     benefícios distribuídos.</li>
                 <li><strong>Beneficios_has_Funcionarios:</strong> Estabelece uma relação de muitos para muitos entre
                     funcionários e benefícios, permitindo associar múltiplos benefícios a um funcionário e vice-versa.
-                </li>
+                    Esta tabela facilita a gestão de benefícios, permitindo que os funcionários recebam vários tipos de
+                    benefícios ao longo do tempo.</li>
             </ul>
             <div class="text-center mt-4">
                 <img src="img/dba.PNG" alt="Imagem da interface da dashboard de análise de dados">
