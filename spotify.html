@@ -14,6 +14,12 @@
             color: #fff;
         }
 
+        .icon {
+            height: 50px;
+            width: 50px;
+            margin-bottom: 50px;
+        }
+
         .spotify-container {
             display: flex;
             flex-direction: column;
@@ -279,6 +285,47 @@
         .sidebar-language-selector span {
             font-size: 0.9em;
         }
+
+        .footer-fixo {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #af2896, #509bf5);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .footer-texto {
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        .footer-texto strong {
+            font-size: 16px;
+        }
+
+        .footer-botao {
+            background-color: #fff;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .footer-botao:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
@@ -286,6 +333,7 @@
     <div class="spotify-container">
         <aside class="sidebar">
             <div class="sidebar-container">
+                <img class="icon" src="img/spotifyIcon2.png" alt="">
                 <!-- Primeira seção -->
                 <div class="sidebar-section">
                     <h2 class="sidebar-title">Crie sua primeira playlist</h2>
@@ -544,7 +592,16 @@
                     </div>
                 </div>
             </section>
+            <footer class="footer-fixo">
+                <div class="footer-texto">
+                    <strong>Testar o Premium de graça</strong>
+                    <p>Inscreva-se para curtir música ilimitada e podcasts só com alguns anúncios. Não precisa de cartão
+                        de crédito.</p>
+                </div>
+                <button class="footer-botao">Inscreva-se grátis</button>
+            </footer>
         </main>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
