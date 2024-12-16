@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify Clone</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-uE+25lTxiDLkviI3KIZIBX7qFR9cXYjEG6WUCpm6zOb2+Hf/9Hwr5C3rwAb5J4qtPjI1Re8cL5/VBNW37KJw4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             margin: 0;
@@ -256,7 +256,6 @@
         .sidebar-footer {
             margin-top: auto;
             margin-bottom: 100px;
-            text-align: center;
             font-size: 0.8em;
             color: #b3b3b3;
         }
@@ -284,35 +283,31 @@
             margin-right: 8px;
         }
 
-        /* Botão com o estilo */
-    /* Botão com o estilo */
-    /* Botão com o estilo */
-    .language-button {
-      display: inline-flex;
-      align-items: center;
-      border: 1px solid #666; /* Cor da borda */
-      border-radius: 20px; /* Bordas arredondadas */
-      padding: 8px 16px;
-      color: #fff; /* Cor do texto padrão */
-      text-decoration: none; /* Remove o sublinhado */
-      font-size: 14px;
-      font-weight: 500;
-      transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transição suave */
-    }
+        .language-button {
+            border: 1px solid red;
+            display: inline-flex;
+            align-items: center;
+            border: 1px solid #666;
+            border-radius: 20px;
+            padding: 8px 16px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
 
-    /* Ícone dentro do botão */
-    .language-button i {
-      margin-right: 8px; /* Espaço entre ícone e texto */
-      font-size: 14px;
-    }
+        .language-button i {
+            margin-right: 8px;
+            font-size: 14px;
+        }
 
-    /* Efeito hover */
-    .language-button:hover {
-      background-color: #fff; /* Fundo branco */
-      color: #000; /* Texto preto */
-      border-color: #fff; /* Borda branca */
-      text-decoration: none; /* Garante que o texto não tenha linha */
-    }
+        .language-button:hover {
+            background-color: #fff;
+            color: #000;
+            border-color: #fff;
+            text-decoration: none;
+        }
 
         .footer-fixo {
             position: fixed;
@@ -389,7 +384,7 @@
                         <a href="#" class="sidebar-footer-link">Acessibilidade</a>
                     </div>
                     <a href="#" class="language-button">
-                        <i class="fas fa-globe"></i> <!-- Ícone do globo -->
+                        <i class="fa-solid fa-globe"></i> <!-- Ícone do globo -->
                         Português do Brasil
                       </a>
                 </div>
