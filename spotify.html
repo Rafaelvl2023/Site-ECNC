@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotify Clone</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             margin: 0;
@@ -283,9 +284,35 @@
             margin-right: 8px;
         }
 
-        .sidebar-language-selector span {
-            font-size: 0.9em;
-        }
+        /* Botão com o estilo */
+    /* Botão com o estilo */
+    /* Botão com o estilo */
+    .language-button {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid #666; /* Cor da borda */
+      border-radius: 20px; /* Bordas arredondadas */
+      padding: 8px 16px;
+      color: #fff; /* Cor do texto padrão */
+      text-decoration: none; /* Remove o sublinhado */
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Transição suave */
+    }
+
+    /* Ícone dentro do botão */
+    .language-button i {
+      margin-right: 8px; /* Espaço entre ícone e texto */
+      font-size: 14px;
+    }
+
+    /* Efeito hover */
+    .language-button:hover {
+      background-color: #fff; /* Fundo branco */
+      color: #000; /* Texto preto */
+      border-color: #fff; /* Borda branca */
+      text-decoration: none; /* Garante que o texto não tenha linha */
+    }
 
         .footer-fixo {
             position: fixed;
@@ -361,9 +388,10 @@
                         <a href="#" class="sidebar-footer-link">Sobre anúncios</a>|
                         <a href="#" class="sidebar-footer-link">Acessibilidade</a>
                     </div>
-                    <div class="sidebar-language-selector">
-                        <span>🌎 Português do Brasil</span>
-                    </div>
+                    <a href="#" class="language-button">
+                        <i class="fas fa-globe"></i> <!-- Ícone do globo -->
+                        Português do Brasil
+                      </a>
                 </div>
             </div>
         </aside>
