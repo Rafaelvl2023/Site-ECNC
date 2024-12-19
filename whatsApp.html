@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar e Conteúdo ao Lado</title>
+    <style>
+        /* Reset Básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background-color: #075e54;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            font-size: 20px;
+        }
+
+        .navbar .nav-links span {
+            margin-left: 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .navbar .nav-links span:hover {
+            text-decoration: underline;
+        }
+
+        /* Layout Principal */
+        .main-container {
+            display: flex;
+            flex: 1;
+            margin-top: 50px;
+            /* Espaço para a navbar */
+            height: calc(100vh - 50px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background-color: #ffffff;
+            width: 350px;
+            border-right: 1px solid #ddd;
+            overflow-y: auto;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            left: 0;
+            top: 50px;
+            bottom: 0;
+        }
+
+        /* Cabeçalho Sidebar */
+        .sidebar .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .sidebar .header h2 {
+            font-size: 20px;
+        }
+
+        .icons span {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        /* Abas */
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin: 10px 0;
+        }
+
+        .tab {
+            background-color: #e9ecef;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .tab.active {
+            background-color: #d2f8d2;
+            font-weight: bold;
+        }
+
+        /* Pesquisa */
+        .search input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .tags,
+        .archived {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        /* Lista de Conversas */
+        .chat-list {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .chat-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .chat-item:hover {
+            background-color: #f0f2f5;
+        }
+
+        .avatar {
+            background-color: #d2f8d2;
+            padding: 10px;
+            border-radius: 50%;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        .chat-info {
+            flex: 1;
+        }
+
+        .chat-info h4 {
+            font-size: 16px;
+        }
+
+        .chat-info p {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .chat-time {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Conteúdo Principal */
+        .content {
+            margin-left: 350px;
+            /* Espaço para a sidebar */
+            padding: 20px;
+            background-color: #ffffff;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .content h2 {
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Personalizar a barra de rolagem da sidebar */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+            /* Largura da barra de rolagem */
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+            /* Cor do fundo da barra de rolagem */
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: #888;
+            /* Cor da "cabeça" da barra de rolagem */
+            border-radius: 10px;
+            /* Borda arredondada da "cabeça" da barra */
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+            /* Cor da "cabeça" da barra ao passar o mouse */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Minha Aplicação</h1>
+        <div class="nav-links">
+            <span>Home</span>
+            <span>Sobre</span>
+            <span>Contato</span>
+        </div>
+    </div>
+
+    <!-- Layout Principal -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <!-- Cabeçalho -->
+            <div class="header">
+                <h2>Conversas</h2>
+                <div class="icons">
+                    <span>🔍</span>
+                    <span>➕</span>
+                    <span>⚙️</span>
+                    <span>🔒</span>
+                </div>
+            </div>
+
+            <!-- Input de Pesquisa -->
+            <div class="search">
+                <input type="text" placeholder="Pesquisar">
+            </div>
+
+            <!-- Abas de Filtro -->
+            <div class="tabs">
+                <button class="tab active">Tudo</button>
+                <button class="tab">Não lidas</button>
+                <button class="tab">Favoritas</button>
+                <button class="tab">Grupos</button>
+            </div>
+
+            <!-- Etiquetas -->
+            <div class="tags">
+                <span>Etiquetas ▼</span>
+            </div>
+
+            <!-- Conversas Arquivadas -->
+            <div class="archived">
+                <span>📁 Arquivadas <strong>4</strong></span>
+            </div>
+
+            <!-- Lista de Conversas -->
+            <div class="chat-list">
+                <!-- Chat 1 -->
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+                <div class="chat-item">
+                    <div class="avatar">📧</div>
+                    <div class="chat-info">
+                        <h4>Contratos</h4>
+                        <p>Você: Mayck Amazon</p>
+                    </div>
+                    <div class="chat-time">quinta-feira</div>
+                </div>
+
+                <!-- Outros Chats -->
+            </div>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="content">
+            <h2>Conteúdo Principal</h2>
+            <p>Este é o espaço para o conteúdo principal da aplicação. Aqui você pode inserir qualquer informação ou
+                funcionalidade adicional.</p>
+            <p>Por exemplo: gráficos, textos, formulários, imagens, etc.</p>
+        </main>
+    </div>
+</body>
+
+</html>

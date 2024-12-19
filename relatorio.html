@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Atendimentos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+
+        .container h4 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            background-image: linear-gradient(to bottom, #007bff, #00b3e6, #007bff);
+            color: #fff;
+            font-weight: bold;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .card-body {
+            padding: 20px;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .col-md-3 {
+            padding: 0 15px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .col-md-3 .card {
+            width: 100%;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        canvas {
+            max-width: 100%;
+            height: 40vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h4 class="mb-4">Relatório de Atendimentos</h4>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">Total de Atendimentos</div>
+                    <div class="card-body" id="total-registros">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">Data de Maior Volume</div>
+                    <div class="card-body" id="data-mais-atendimentos">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">Data de Menor Volume</div>
+                    <div class="card-body" id="data-menos-atendimentos">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">Atendimentos Mínimo e Máximo</div>
+                    <div class="card-body" id="menor-maior-quantidade">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">Quantidade de Atendimentos por Dia</div>
+            <div class="card-body">
+                <canvas id="chart"></canvas>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const atendimentos = [
+            { data: '2024-11-25', nome: 'Neimar' },
+            { data: '2024-11-25', nome: 'Iracema' },
+            { data: '2024-11-25', nome: 'Thais Nobre 🌱' },
+            { data: '2024-11-25', nome: 'KB Service Decor' },
+            { data: '2024-11-25', nome: 'Perfumaria' },
+            { data: '2024-11-25', nome: 'Fábio Reis Kuwamoto' },
+            { data: '2024-11-25', nome: 'Alessandro Mineiro Lacerda' },
+            { data: '2024-11-25', nome: 'WR Representações Gestão De Negócios' },
+            { data: '2024-11-25', nome: 'Célio' },
+            { data: '2024-11-25', nome: 'Qcorte' },
+            { data: '2024-11-25', nome: 'Davidson Para' },
+            { data: '2024-11-25', nome: 'João Fernando' },
+            { data: '2024-11-25', nome: 'ROBSON FELIPE ALVES NOGUEIRA' },
+            { data: '2024-11-25', nome: 'Shandong U-May CNC Technology Co.,Ltd' },
+            { data: '2024-11-25', nome: '559981384722' },
+            { data: '2024-11-25', nome: 'Dawer Personalizados' },
+            { data: '2024-11-25', nome: 'LEONARDO' },
+            { data: '2024-11-25', nome: 'Ivone Rezende Goulart' },
+            { data: '2024-11-25', nome: 'Carmelo Especiarias' },
+            { data: '2024-11-25', nome: 'Alessandro ' },
+            { data: '2024-11-25', nome: 'Bruno' },
+            { data: '2024-11-25', nome: 'Sidney Carvalho' },
+            { data: '2024-11-25', nome: 'Ana Rodrigues' },
+            { data: '2024-11-25', nome: 'Júlio César' },
+            { data: '2024-11-25', nome: 'Jefferson' },
+            { data: '2024-11-25', nome: 'Denis Ramalho' },
+            { data: '2024-11-25', nome: 'FRETE' },
+            { data: '2024-11-25', nome: 'TECNOL LINEAR SYSTEM' },
+            { data: '2024-11-25', nome: 'douglasalvesgoncalves32' },
+            { data: '2024-11-25', nome: 'Tainá Almeida' },
+            { data: '2024-11-26', nome: 'Farias' },
+            { data: '2024-11-26', nome: 'Livia Barros' },
+            { data: '2024-11-26', nome: 'Jairo' },
+            { data: '2024-11-26', nome: 'Ricardo Porcela' },
+            { data: '2024-11-26', nome: 'Simone' },
+            { data: '2024-11-26', nome: 'Clean Gigienização' },
+            { data: '2024-11-26', nome: 'Rogério Ambrósio Mussi' },
+            { data: '2024-11-26', nome: 'Vinicius Santos Lacerda' },
+            { data: '2024-11-26', nome: 'rosani 💗' },
+            { data: '2024-11-26', nome: 'Jonny Catarin' },
+            { data: '2024-11-26', nome: 'Rochilane' },
+            { data: '2024-11-27', nome: 'Gustavo Matos' },
+            { data: '2024-11-27', nome: 'Carol' },
+            { data: '2024-11-27', nome: 'Felipe Rocha' },
+            { data: '2024-11-27', nome: 'Marcos - JM23' },
+            { data: '2024-11-27', nome: 'Arte laser' },
+            { data: '2024-11-27', nome: 'Lezio' },
+            { data: '2024-11-27', nome: 'Jailson Rodrigues' },
+            { data: '2024-11-27', nome: 'AMANA ISHFAQ' },
+            { data: '2024-11-27', nome: '923227433292' },
+            { data: '2024-11-27', nome: '+55 923227433292' },
+            { data: '2024-11-27', nome: 'matheus aguiar' },
+            { data: '2024-11-28', nome: 'Lecobrinquedos.com.br' },
+            { data: '2024-11-28', nome: 'Laranja Print Impressão Digital' },
+            { data: '2024-11-28', nome: 'KARMON' },
+            { data: '2024-11-28', nome: 'Borges' },
+            { data: '2024-11-28', nome: 'LEONARDO' },
+            { data: '2024-11-28', nome: 'Elias Pereira' },
+            { data: '2024-11-29', nome: 'Irineu Marcos' },
+            { data: '2024-11-29', nome: 'Rafaelly Melo' },
+            { data: '2024-11-29', nome: 'Gabriel F. Carvalho' },
+            { data: '2024-11-29', nome: 'Alana' },
+            { data: '2024-11-29', nome: 'MIleide' },
+            { data: '2024-11-29', nome: 'OPEUCANO' },
+            { data: '2024-11-29', nome: 'Firmino' },
+            { data: '2024-11-29', nome: 'Cristiano Cowboy' },
+            { data: '2024-11-29', nome: 'Felipe Nunes' },
+            { data: '2024-12-02', nome: 'Everton' },
+            { data: '2024-12-02', nome: 'Cleusa' },
+            { data: '2024-12-02', nome: 'Gustavo do Armazém' },
+            { data: '2024-12-02', nome: 'Eduardo' },
+            { data: '2024-12-02', nome: 'Jefferson Oliveira' },
+            { data: '2024-12-02', nome: 'Nando' },
+            { data: '2024-12-02', nome: 'Daniel Fernandes' },
+            { data: '2024-12-03', nome: 'Adilso' },
+            { data: '2024-12-03', nome: 'Marcos Souza' },
+            { data: '2024-12-03', nome: 'gráfica on-line' },
+            { data: '2024-12-03', nome: 'Samuel Viola' },
+            { data: '2024-12-03', nome: 'Grupo Coofex' },
+            { data: '2024-12-03', nome: 'Tiago' },
+            { data: '2024-12-03', nome: 'Claudia' },
+            { data: '2024-12-03', nome: 'Sonho&Art' },
+            { data: '2024-12-03', nome: 'Phelipe' },
+            { data: '2024-12-03', nome: 'EneidaPolo' },
+            { data: '2024-12-03', nome: 'Art Inspiring' },
+            { data: '2024-12-03', nome: 'Willams Cunha' },
+            { data: '2024-12-03', nome: 'Nicholas' },
+            { data: '2024-12-03', nome: 'Penhora em geral' },
+            { data: '2024-12-04', nome: 'Minathãn Sousa' },
+            { data: '2024-12-04', nome: 'Boni' },
+            { data: '2024-12-04', nome: 'AGIMPORTS027' },
+            { data: '2024-12-04', nome: 'Erick Silva' },
+            { data: '2024-12-04', nome: 'Comercial Reis Transporte' },
+            { data: '2024-12-04', nome: '555591884909' },
+            { data: '2024-12-04', nome: '558293972605' },
+            { data: '2024-12-05', nome: 'Belo Clean' },
+            { data: '2024-12-05', nome: 'ALINE' },
+            { data: '2024-12-05', nome: 'Jeferson' },
+            { data: '2024-12-05', nome: 'Antônio Almeida' },
+            { data: '2024-12-05', nome: 'Tatiany Ferreira' },
+            { data: '2024-12-05', nome: 'Well Nutricionista' },
+            { data: '2024-12-06', nome: 'Jardel Cerqueira' },
+            { data: '2024-12-06', nome: 'Pipo Bernardo' },
+            { data: '2024-12-06', nome: 'Tati Queiroz' },
+            { data: '2024-12-06', nome: 'Valdete Santos 🌹' },
+            { data: '2024-12-09', nome: 'Pro Xadrez Escolar' },
+            { data: '2024-12-09', nome: 'Destak' },
+            { data: '2024-12-09', nome: 'Clube Candeias' },
+            { data: '2024-12-09', nome: 'Leidson' },
+            { data: '2024-12-09', nome: 'Rodrigo Bezerra da Silva' },
+            { data: '2024-12-09', nome: 'Val Golfeto' },
+            { data: '2024-12-09', nome: 'Jesus 🙏' },
+            { data: '2024-12-10', nome: 'Ola !' },
+            { data: '2024-12-10', nome: 'Stela Couto' },
+            { data: '2024-12-10', nome: 'Romildo' },
+            { data: '2024-12-10', nome: 'Lucas Souza' },
+            { data: '2024-12-11', nome: 'Rodrigo Corrêa e Castro' },
+            { data: '2024-12-11', nome: 'Viviane Custódio' },
+            { data: '2024-12-12', nome: 'мiнЋǺ ƒǺмíŁiǺ, м€Ü тÜÐØ!' },
+            { data: '2024-12-12', nome: 'Altair' },
+            { data: '2024-12-13', nome: 'Weliton Luiz' },
+            { data: '2024-12-13', nome: 'Claudemir Polimeros e Injecao Plastica' },
+            { data: '2024-12-13', nome: 'Guilherme' },
+            { data: '2024-12-13', nome: 'Fabio' },
+            { data: '2024-12-16', nome: 'Marcos Sabino' },
+            { data: '2024-12-16', nome: 'Geane' },
+            { data: '2024-12-16', nome: 'Paulo Cesar' },
+            { data: '2024-12-16', nome: 'Marcio Capelli' },
+            { data: '2024-12-16', nome: 'Riva' },
+            { data: '2024-12-16', nome: 'Jefferson' },
+            { data: '2024-12-16', nome: 'Angelo' },
+            { data: '2024-12-17', nome: 'A.RJ' },
+            { data: '2024-12-17', nome: 'paulo' },
+            { data: '2024-12-18', nome: 'Lisa ZHOU' },
+            { data: '2024-12-19', nome: 'Leni Lima' },
+            { data: '2024-12-19', nome: 'Fernanda- atendimento web' },
+            { data: '2024-12-19', nome: 'Gold Joias' },
+            { data: '2024-12-19', nome: 'Alcides' },
+            { data: '2024-12-19', nome: 'BrindeRN - Brindes' },
+            { data: '2024-12-19', nome: 'Gratidão' },
+            { data: '2024-12-19', nome: 'Gilberto (Bebeto)' },
+            { data: '2024-12-19', nome: 'Tribo da Terra Luiz Vilbert' },
+            { data: '2024-12-19', nome: '.' },
+            { data: '2024-12-19', nome: 'Thiago- Alianças Amor Eterno' },
+            { data: '2024-12-19', nome: '.' },
+            { data: '2024-12-19', nome: 'Junior' },
+            { data: '2024-12-19', nome: 'Lindomar Véras' },
+            { data: '2024-12-19', nome: 'Jps Sublimação' },
+            { data: '2024-12-19', nome: 'VGOF' },
+            { data: '2024-12-19', nome: 'Rocha' },
+            { data: '2024-12-19', nome: 'Iris' },
+            { data: '2024-12-19', nome: 'Will' },
+            { data: '2024-12-19', nome: 'Arlindo' },
+            { data: '2024-12-19', nome: 'Adelson' },
+            { data: '2024-12-19', nome: 'geraldo martins martins' },
+            { data: '2024-12-19', nome: 'Daniel Araújo' },
+            { data: '2024-12-19', nome: 'Roberta Davila (Bel)' },
+            { data: '2024-12-19', nome: 'Vision Print' },
+            { data: '2024-12-19', nome: '...' },
+            { data: '2024-12-19', nome: 'Luciana Otsubo 👨‍👩‍👦🐕❤️' },
+            { data: '2024-12-19', nome: 'Carlos Facasuaformatura' },
+            { data: '2024-12-19', nome: 'ALFOTEC Comércio de Equipamentos Eletrônicos' },
+            { data: '2024-12-19', nome: 'Bruno Felipe Celly' },
+            { data: '2024-12-19', nome: 'Wiliam novais palmeira' },
+            { data: '2024-12-19', nome: 'Paulinho Pintor' },
+            { data: '2024-12-19', nome: 'Eduardo Moreira' },
+            { data: '2024-12-19', nome: 'Robson Rafagnin' },
+            { data: '2024-12-19', nome: 'CARVALHO🚴🏿' },
+            { data: '2024-12-19', nome: 'outros negócios' },
+            { data: '2024-12-19', nome: 'Everton' },
+            { data: '2024-12-19', nome: 'Ana Paula' },
+            { data: '2024-12-19', nome: 'andreacampaniniqkanto' }
+        ];
+
+        // Função para contar atendimentos por data
+        function contarAtendimentosPorData(atendimentos) {
+            const contagem = {};
+            atendimentos.forEach(atendimento => {
+                contagem[atendimento.data] = (contagem[atendimento.data] || 0) + 1;
+            });
+            return contagem;
+        }
+
+        const contagemAtendimentos = contarAtendimentosPorData(atendimentos);
+
+        document.getElementById('total-registros').textContent = atendimentos.length;
+        document.getElementById('data-mais-atendimentos').textContent = Object.keys(contagemAtendimentos).reduce((a, b) => contagemAtendimentos[a] > contagemAtendimentos[b] ? a : b);
+        document.getElementById('data-menos-atendimentos').textContent = Object.keys(contagemAtendimentos).reduce((a, b) => contagemAtendimentos[a] < contagemAtendimentos[b] ? a : b);
+        document.getElementById('menor-maior-quantidade').textContent = `Menor: ${Math.min(...Object.values(contagemAtendimentos))}, Maior: ${Math.max(...Object.values(contagemAtendimentos))}`;
+
+        const labels = Object.keys(contagemAtendimentos);
+        const data = Object.values(contagemAtendimentos);
+
+        const ctx = document.getElementById('chart').getContext('2d');
+
+        const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient.addColorStop(0, '#007bff');
+        gradient.addColorStop(1, '#00bfff');
+        gradient.addColorStop(0.2, '#007bff');
+        
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Atendimentos por dia',
+                    data: data,
+                    backgroundColor: gradient,
+                    borderColor: '#0056b3',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Data'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Quantidade de Atendimentos'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
