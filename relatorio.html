@@ -18,9 +18,8 @@
         }
 
         .card {
-            margin-bottom: 20px;
             border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.37);
             background-color: #fff;
             display: flex;
             flex-direction: column;
@@ -31,7 +30,7 @@
             color: #fff;
             font-weight: bold;
             text-align: center;
-            border-top-left-radius: 10px;
+            border-top-left-radius: 100px;
             border-top-right-radius: 10px;
         }
 
@@ -73,36 +72,49 @@
     <div class="container">
         <h4 class="mb-4">Relatório de Atendimentos</h4>
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card">
                     <div class="card-header">Total de Atendimentos</div>
                     <div class="card-body" id="total-registros">
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card">
                     <div class="card-header">Data de Maior Volume</div>
                     <div class="card-body" id="data-mais-atendimentos">
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card">
                     <div class="card-header">Data de Menor Volume</div>
                     <div class="card-body" id="data-menos-atendimentos">
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card">
                     <div class="card-header">Atendimentos Mínimo e Máximo</div>
                     <div class="card-body" id="menor-maior-quantidade">
                     </div>
                 </div>
             </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-header">Média de Atendimentos</div>
+                    <div class="card-body" id="media-atendimentos">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="card">
+                    <div class="card-header">Quantidade Dias Registrados</div>
+                    <div class="card-body" id="quantidade-datas-registradas"></div>
+                </div>
+            </div>
         </div>
-        <div class="card">
+        <div class="card mt-4">
             <div class="card-header">Quantidade de Atendimentos por Dia</div>
             <div class="card-body">
                 <canvas id="chart"></canvas>
@@ -283,10 +295,13 @@
             { data: '2024-12-19', nome: 'outros negócios' },
             { data: '2024-12-19', nome: 'Everton' },
             { data: '2024-12-19', nome: 'Ana Paula' },
-            { data: '2024-12-19', nome: 'andreacampaniniqkanto' }
+            { data: '2024-12-19', nome: 'andreacampaniniqkanto' },
+            { data: '2024-12-19', nome: 'Mariana Ferreira' },
+            { data: '2024-12-20', nome: 'Daniel Gurgel' },
+            { data: '2024-12-20', nome: 'Kevin GoodCut' },
+            { data: '2024-12-20', nome: 'Diego Aquino' },
         ];
 
-        // Função para contar atendimentos por data
         function contarAtendimentosPorData(atendimentos) {
             const contagem = {};
             atendimentos.forEach(atendimento => {
@@ -295,13 +310,28 @@
             return contagem;
         }
 
+        // Função para contar atendimentos por data
         const contagemAtendimentos = contarAtendimentosPorData(atendimentos);
 
+        // Atualização dos elementos de estatísticas
         document.getElementById('total-registros').textContent = atendimentos.length;
-        document.getElementById('data-mais-atendimentos').textContent = Object.keys(contagemAtendimentos).reduce((a, b) => contagemAtendimentos[a] > contagemAtendimentos[b] ? a : b);
-        document.getElementById('data-menos-atendimentos').textContent = Object.keys(contagemAtendimentos).reduce((a, b) => contagemAtendimentos[a] < contagemAtendimentos[b] ? a : b);
-        document.getElementById('menor-maior-quantidade').textContent = `Menor: ${Math.min(...Object.values(contagemAtendimentos))}, Maior: ${Math.max(...Object.values(contagemAtendimentos))}`;
+        document.getElementById('data-mais-atendimentos').textContent = Object.keys(contagemAtendimentos)
+            .reduce((a, b) => contagemAtendimentos[a] > contagemAtendimentos[b] ? a : b);
+        document.getElementById('data-menos-atendimentos').textContent = Object.keys(contagemAtendimentos)
+            .reduce((a, b) => contagemAtendimentos[a] < contagemAtendimentos[b] ? a : b);
+        document.getElementById('menor-maior-quantidade').textContent =
+            `Menor: ${Math.min(...Object.values(contagemAtendimentos))}, Maior: ${Math.max(...Object.values(contagemAtendimentos))}`;
 
+        // Cálculo da média de atendimentos
+        const totalAtendimentos = atendimentos.length;
+        const numeroDeDias = Object.keys(contagemAtendimentos).length;
+        const mediaAtendimentos = Math.round(totalAtendimentos / numeroDeDias);
+
+        // Atualização das estatísticas adicionais
+        document.getElementById('media-atendimentos').textContent = mediaAtendimentos;
+        document.getElementById('quantidade-datas-registradas').textContent = numeroDeDias;
+
+        // Configuração do gráfico
         const labels = Object.keys(contagemAtendimentos);
         const data = Object.values(contagemAtendimentos);
 
@@ -311,7 +341,7 @@
         gradient.addColorStop(0, '#007bff');
         gradient.addColorStop(1, '#00bfff');
         gradient.addColorStop(0.2, '#007bff');
-        
+
         new Chart(ctx, {
             type: 'bar',
             data: {
