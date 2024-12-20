@@ -327,10 +327,8 @@
             return contagem;
         }
 
-        // Função para contar atendimentos por data
         const contagemAtendimentos = contarAtendimentosPorData(atendimentos);
 
-        // Atualização dos elementos de estatísticas
         document.getElementById('total-registros').textContent = atendimentos.length;
         document.getElementById('data-mais-atendimentos').textContent = Object.keys(contagemAtendimentos)
             .reduce((a, b) => contagemAtendimentos[a] > contagemAtendimentos[b] ? a : b);
@@ -339,16 +337,13 @@
         document.getElementById('menor-maior-quantidade').textContent =
             `Menor: ${Math.min(...Object.values(contagemAtendimentos))}, Maior: ${Math.max(...Object.values(contagemAtendimentos))}`;
 
-        // Cálculo da média de atendimentos
         const totalAtendimentos = atendimentos.length;
         const numeroDeDias = Object.keys(contagemAtendimentos).length;
         const mediaAtendimentos = Math.round(totalAtendimentos / numeroDeDias);
 
-        // Atualização das estatísticas adicionais
         document.getElementById('media-atendimentos').textContent = mediaAtendimentos;
         document.getElementById('quantidade-datas-registradas').textContent = numeroDeDias;
 
-        // Configuração do gráfico
         const labels = Object.keys(contagemAtendimentos);
         const data = Object.values(contagemAtendimentos);
 
@@ -360,16 +355,32 @@
         gradient.addColorStop(0.2, '#007bff');
 
         new Chart(ctx, {
-            type: 'bar',
+            type: 'bar', 
             data: {
                 labels: labels,
-                datasets: [{
-                    label: 'Atendimentos por dia',
-                    data: data,
-                    backgroundColor: gradient,
-                    borderColor: '#0056b3',
-                    borderWidth: 1
-                }]
+                datasets: [
+                    {
+                        label: 'Atendimentos por dia (Barras)',
+                        data: data,
+                        backgroundColor: gradient,
+                        borderColor: '#0056b3',
+                        borderWidth: 1,
+                        order: 2  
+                    },
+                    {
+                        label: 'Atendimentos por dia (Linha)',
+                        data: data,
+                        borderColor: '#ff6347',
+                        backgroundColor: 'rgba(255, 99, 71, 0.2)',
+                        type: 'line',  
+                        tension: 0.4,  
+                        fill: false,  
+                        pointRadius: 5,  
+                        pointBackgroundColor: '#ff6347',
+                        borderWidth: 3,
+                        order: 1  
+                    }
+                ]
             },
             options: {
                 responsive: true,
