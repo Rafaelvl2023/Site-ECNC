@@ -10,6 +10,7 @@
         body {
             background-color: #f8f9fa;
             padding: 20px;
+            cursor: none;
         }
 
         .container h4 {
@@ -64,6 +65,21 @@
         canvas {
             max-width: 100%;
             height: 40vh;
+        }
+
+        .cursor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 123, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            transition: transform 0.15s ease-out;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .cursor.expand {
+            transform: translate(-50%, -50%) scale(1.5);
         }
     </style>
 </head>
@@ -126,7 +142,7 @@
         const atendimentos = [
             { data: '2024-11-25', nome: 'Neimar' },
             { data: '2024-11-25', nome: 'Iracema' },
-            { data: '2024-11-25', nome: 'Thais Nobre 🌱' },
+            { data: '2024-11-25', nome: 'Thais Nobre' },
             { data: '2024-11-25', nome: 'KB Service Decor' },
             { data: '2024-11-25', nome: 'Perfumaria' },
             { data: '2024-11-25', nome: 'Fábio Reis Kuwamoto' },
@@ -162,7 +178,7 @@
             { data: '2024-11-26', nome: 'Clean Gigienização' },
             { data: '2024-11-26', nome: 'Rogério Ambrósio Mussi' },
             { data: '2024-11-26', nome: 'Vinicius Santos Lacerda' },
-            { data: '2024-11-26', nome: 'rosani 💗' },
+            { data: '2024-11-26', nome: 'rosani' },
             { data: '2024-11-26', nome: 'Jonny Catarin' },
             { data: '2024-11-26', nome: 'Rochilane' },
             { data: '2024-11-27', nome: 'Gustavo Matos' },
@@ -228,14 +244,14 @@
             { data: '2024-12-06', nome: 'Jardel Cerqueira' },
             { data: '2024-12-06', nome: 'Pipo Bernardo' },
             { data: '2024-12-06', nome: 'Tati Queiroz' },
-            { data: '2024-12-06', nome: 'Valdete Santos 🌹' },
+            { data: '2024-12-06', nome: 'Valdete Santos' },
             { data: '2024-12-09', nome: 'Pro Xadrez Escolar' },
             { data: '2024-12-09', nome: 'Destak' },
             { data: '2024-12-09', nome: 'Clube Candeias' },
             { data: '2024-12-09', nome: 'Leidson' },
             { data: '2024-12-09', nome: 'Rodrigo Bezerra da Silva' },
             { data: '2024-12-09', nome: 'Val Golfeto' },
-            { data: '2024-12-09', nome: 'Jesus 🙏' },
+            { data: '2024-12-09', nome: 'Jesus' },
             { data: '2024-12-10', nome: 'Ola !' },
             { data: '2024-12-10', nome: 'Stela Couto' },
             { data: '2024-12-10', nome: 'Romildo' },
@@ -283,7 +299,7 @@
             { data: '2024-12-19', nome: 'Roberta Davila (Bel)' },
             { data: '2024-12-19', nome: 'Vision Print' },
             { data: '2024-12-19', nome: '...' },
-            { data: '2024-12-19', nome: 'Luciana Otsubo 👨‍👩‍👦🐕❤️' },
+            { data: '2024-12-19', nome: 'Luciana Otsubo' },
             { data: '2024-12-19', nome: 'Carlos Facasuaformatura' },
             { data: '2024-12-19', nome: 'ALFOTEC Comércio de Equipamentos Eletrônicos' },
             { data: '2024-12-19', nome: 'Bruno Felipe Celly' },
@@ -291,7 +307,7 @@
             { data: '2024-12-19', nome: 'Paulinho Pintor' },
             { data: '2024-12-19', nome: 'Eduardo Moreira' },
             { data: '2024-12-19', nome: 'Robson Rafagnin' },
-            { data: '2024-12-19', nome: 'CARVALHO🚴🏿' },
+            { data: '2024-12-19', nome: 'CARVALHO' },
             { data: '2024-12-19', nome: 'outros negócios' },
             { data: '2024-12-19', nome: 'Everton' },
             { data: '2024-12-19', nome: 'Ana Paula' },
@@ -300,6 +316,7 @@
             { data: '2024-12-20', nome: 'Daniel Gurgel' },
             { data: '2024-12-20', nome: 'Kevin GoodCut' },
             { data: '2024-12-20', nome: 'Diego Aquino' },
+            { data: '2024-12-20', nome: 'Norberto' },
         ];
 
         function contarAtendimentosPorData(atendimentos) {
@@ -371,6 +388,24 @@
                     }
                 }
             }
+        });
+    </script>
+    <script>
+        const cursor = document.createElement("div");
+        cursor.classList.add("cursor");
+        document.body.appendChild(cursor);
+
+        document.addEventListener("mousemove", (e) => {
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+        });
+
+        document.addEventListener("mousedown", () => {
+            cursor.classList.add("expand");
+        });
+
+        document.addEventListener("mouseup", () => {
+            cursor.classList.remove("expand");
         });
     </script>
 </body>
