@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efeitos de Fundo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Efeito 1: Gradient Animated Background */
+        .gradient-bg {
+            height: 100vh;
+            background: linear-gradient(45deg, #ff6a00, #ffcc00af, #b8257dc5, #0011ffcb);
+            background-size: 400% 400%;
+            animation: gradient 10s ease infinite;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Efeito 2: Starry Night (Estrelas no Fundo) */
+        .starry-night {
+            height: 100vh;
+            background-color: #111;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            animation: starAnimation 3s linear infinite;
+        }
+
+        @keyframes starAnimation {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Geração das estrelas via JS */
+        .starry-night .star {
+            position: absolute;
+            background-color: #fff;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            animation: starAnimation 3s linear infinite;
+        }
+
+        /* Efeito 3: Moving Waves Background */
+        .moving-waves {
+            height: 100vh;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            background-size: 400% 400%;
+            animation: moveBackground 6s ease infinite;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes moveBackground {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* Efeito 4: Particle Background */
+        .particle-bg {
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            width: 5px;
+            height: 5px;
+            animation: particleMovement 5s infinite;
+        }
+
+        @keyframes particleMovement {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+            100% {
+                transform: translate3d(100vw, 100vh, 0);
+            }
+        }
+
+        /* Efeito 5: Liquid Animation */
+        .liquid-bg {
+            height: 100vh;
+            background: #3b8d99;
+            background-size: 200% 200%;
+            animation: liquidAnimation 5s ease infinite;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @keyframes liquidAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Adicionando transições suaves */
+        .effect-container {
+            transition: opacity 1s ease;
+        }
+
+        .effect-container.hidden {
+            opacity: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="effect-container gradient-bg">
+        <h1>Gradient Animated Background</h1>
+    </div>
+
+    <div class="effect-container starry-night">
+        <h1>Starry Night</h1>
+    </div>
+
+    <div class="effect-container moving-waves">
+        <h1>Moving Waves Background</h1>
+    </div>
+
+    <div class="effect-container particle-bg">
+        <h1>Particle Background</h1>
+    </div>
+
+    <div class="effect-container liquid-bg">
+        <h1>Liquid Animation</h1>
+    </div>
+
+    <script>
+        // Gerar estrelas no fundo da tela para o efeito de estrelas
+        document.addEventListener('DOMContentLoaded', () => {
+            const starryNight = document.querySelector('.starry-night');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.top = `${Math.random() * 100}vh`;
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.animationDuration = `${Math.random() * 3 + 2}s`;
+                starryNight.appendChild(star);
+            }
+        });
+    </script>
+
+</body>
+</html>

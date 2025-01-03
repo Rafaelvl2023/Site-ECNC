@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mais Efeitos de Fundo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+
+        /* Efeito 1: Bubble Background */
+        .bubble-bg {
+            height: 100vh;
+            background-color: #2f80ed;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: bubbleAnimation 10s infinite;
+        }
+
+        @keyframes bubbleAnimation {
+            0% {
+                transform: translateY(100vh) scale(0.2);
+            }
+            50% {
+                transform: translateY(-10vh) scale(1);
+            }
+            100% {
+                transform: translateY(100vh) scale(0.2);
+            }
+        }
+
+        /* Efeito 2: Colorful Neon Background */
+        .neon-bg {
+            height: 100vh;
+            background: #ff0080;
+            background: linear-gradient(45deg, #7abfff, #e6e6e6, #7abfff, #e6e6e6, #7abfff, #e6e6e6,  #e6e6e6);
+
+            background-size: 400% 400%;
+            animation: neonAnimation 5s ease infinite;
+        }
+
+        @keyframes neonAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Efeito 3: Circular Animation */
+        .circle-bg {
+            height: 100vh;
+            background-color: #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            animation: circleAnimation 4s linear infinite;
+        }
+
+        @keyframes circleAnimation {
+            0% {
+                width: 50px;
+                height: 50px;
+                top: 50%;
+                left: 50%;
+            }
+            100% {
+                width: 200px;
+                height: 200px;
+                top: -50px;
+                left: -50px;
+            }
+        }
+
+        /* Efeito 4: Stripe Motion Background */
+        .stripe-bg {
+            height: 100vh;
+            background: linear-gradient(45deg, #ff6a00, #ffcc00, #ff0099, #cc00ff);
+            background-size: 400% 400%;
+            animation: stripeAnimation 6s ease infinite;
+        }
+
+        @keyframes stripeAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* Efeito 5: Glitch Effect */
+        .glitch-bg {
+            height: 100vh;
+            background-color: #0a0a0a;
+            position: relative;
+        }
+
+        .glitch {
+            position: absolute;
+            color: #00ff00;
+            font-size: 6rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Courier New', Courier, monospace;
+            animation: glitchAnimation 1.5s infinite;
+        }
+
+        @keyframes glitchAnimation {
+            0% {
+                clip-path: inset(0 0 0 0);
+                transform: translateX(0);
+            }
+            25% {
+                clip-path: inset(0 0 0 20px);
+                transform: translateX(10px);
+            }
+            50% {
+                clip-path: inset(0 0 0 20px);
+                transform: translateX(-10px);
+            }
+            75% {
+                clip-path: inset(0 0 0 20px);
+                transform: translateX(5px);
+            }
+            100% {
+                clip-path: inset(0 0 0 0);
+                transform: translateX(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bubble-bg">
+        <h1 class="bubble">Bubble Background</h1>
+    </div>
+
+    <div class="neon-bg">
+        <h1>Colorful Neon Background</h1>
+    </div>
+
+    <div class="circle-bg">
+        <div class="circle"></div>
+        <h1>Circle Animation</h1>
+    </div>
+
+    <div class="stripe-bg">
+        <h1>Stripe Motion Background</h1>
+    </div>
+
+    <div class="glitch-bg">
+        <div class="glitch">Glitch Effect</div>
+    </div>
+
+</body>
+</html>
