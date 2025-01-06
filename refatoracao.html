@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon"
+        href="data:image/png;base64,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"
+        type="image/x-icon">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            height: 95vh;
+            width: 100%;
+            background-image: url('https://img.freepik.com/vetores-premium/abstrato-fundo-branco-de-forma-geometrica_51543-770.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .top {
+            display: flex;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        .logo {
+            margin-left: 10px;
+        }
+
+        button {
+            color: white;
+            background: linear-gradient(to bottom, #4e73df, #1c3d96);
+            border: none;
+            margin-top: 20px;
+            padding: 6px 12px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+            height: 30px;
+            width: 165.5px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #8e44ad, #2980b9, #8e44ad);
+        }
+
+        .geral {
+            height: 87vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card-custom {
+            border-radius: 5px;
+            background: linear-gradient(to bottom, #4e73df, #1c3d96);
+            color: white;
+            min-height: 100px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.767);
+        }
+
+        .card-custom .card-body {
+            padding-bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-custom .card-title {
+            font-size: 15px;
+        }
+
+        .card-custom .card-text {
+            font-size: 18px;
+        }
+
+        .card-custom .icon {
+            font-size: 20px;
+        }
+
+        .card-custom .value {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .card-custom .footer {
+            font-size: 14px;
+            text-align: right;
+        }
+
+        .grafico {
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #9eb6ff, rgb(147, 154, 255), #9eb6ff);
+            border-image-slice: 1;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.705);
+            padding: 0px;
+            background-color: white;
+        }
+
+        #myChart,
+        #myChart2 {
+            width: 420px !important;
+            height: 476px !important;
+            padding: 25px;
+        }
+
+        #dateRange::placeholder {
+            color: white !important;
+        }
+
+
+        @media (max-width: 1200px) {
+
+            #myChart,
+            #myChart2 {
+                width: 400px !important;
+                height: 380px !important;
+            }
+        }
+
+        @media (max-width: 1100px) {
+
+            #myChart,
+            #myChart2 {
+                width: 380px !important;
+                height: 360px !important;
+            }
+        }
+
+        @media (max-width: 1000px) {
+
+            #myChart,
+            #myChart2 {
+                width: 360px !important;
+                height: 340px !important;
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            #myChart,
+            #myChart2 {
+                width: 340px !important;
+                height: 320px !important;
+            }
+        }
+
+        @media (max-width: 800px) {
+
+            #myChart,
+            #myChart2 {
+                width: 320px !important;
+                height: 300px !important;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            #myChart,
+            #myChart2 {
+                width: 300px !important;
+                height: 280px !important;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            #myChart,
+            #myChart2 {
+                width: 280px !important;
+                height: 260px !important;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            #myChart,
+            #myChart2 {
+                width: 260px !important;
+                height: 240px !important;
+            }
+        }
+
+        .graficoChart {
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #9eb6ff, rgb(147, 154, 255), #9eb6ff);
+            border-image-slice: 1;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.705);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top">
+        <div class="logo">
+            <img src="https://cdn-icons-png.flaticon.com/128/36/36394.png" alt="" style="height: 80px;">
+        </div>
+        <div class="ml-auto mr-2">
+            <div>
+                <form method="GET" action="{{ route('filtros') }}">
+                    <div class="d-flex flex-column flex-md-row">
+                        <div class="button filter-item dropdown mb-2 mb-md-0">
+                            <select id="toggleButtonAno" name="ano" class="btn btn-primary"
+                                    style="color: white; background: linear-gradient(to bottom, #4e73df, #1c3d96); border: none; margin-top: 20px; padding: 6px 12px; font-size: 14px; cursor: pointer; border-radius: 4px; height: 30px; width: 165.5px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.3s ease; margin-right: 10px;">
+                                <option disabled selected>Filtro Ano</option>
+                                @foreach($anos as $ano)
+                                    <option value="{{ $ano }}" style="color: black;">{{ $ano }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="button filter-item dropdown mb-2 mb-md-0">
+                            <select id="toggleButtonMes" name="mes" class="btn btn-primary"
+                                style="color: white; background: linear-gradient(to bottom, #4e73df, #1c3d96); border: none; margin-top: 20px; padding: 6px 12px; font-size: 14px; cursor: pointer; border-radius: 4px; height: 30px; width: 165.5px; display: inline-flex; align-items: center; justify-content: center; transition: background 0.3s ease; margin-right: 10px;">
+                                <option disabled selected>Filtro Mês</option>
+                                <option value="1" style="color: black;">Janeiro</option>
+                                <option value="2" style="color: black;">Fevereiro</option>
+                                <option value="3" style="color: black;">Março</option>
+                                <option value="4" style="color: black;">Abril</option>
+                                <option value="5" style="color: black;">Maio</option>
+                                <option value="6" style="color: black;">Junho</option>
+                                <option value="7" style="color: black;">Julho</option>
+                                <option value="8" style="color: black;">Agosto</option>
+                                <option value="9" style="color: black;">Setembro</option>
+                                <option value="10" style="color: black;">Outubro</option>
+                                <option value="11" style="color: black;">Novembro</option>
+                                <option value="12" style="color: black;">Dezembro</option>
+                            </select>
+                        </div>
+                        <div class="button filter-item dropdown mb-2 mb-md-0">
+                            <button type="submit" id="toggleButtonAno" class="btn">
+                                <div style="margin-top: -5px; color: white;">Filtrar</div>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                {{-- <div class="button filter-item dropdown mr-2 mb-2 mb-md-0">
+                    <input type="text" id="dateRange" name="dateRange" class="btn btn-primary"
+                        style="color: white; background: linear-gradient(to bottom, #4e73df, #1c3d96); border: none; padding: 6px 12px; font-size: 14px; cursor: pointer; border-radius: 4px; height: 30px; margin-top: 20px;"
+                        placeholder="Período">
+                </div> --}}
+            </div>
+        </div>
+    </div>
+
+    <div class="geral row col-md-12 container-fluid">
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-users"></i>
+                                <div>
+                                    <h5 class="card-title">Total Financeiro</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">{{ $totalFinanceiro }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=50&id=zRbU1NYxUdI2&format=png&color=FFFFFF"
+                                        alt="" width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-chart-bar"></i>
+                                <div>
+                                    <h5 class="card-title">Soma Valor Financeiro</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">R$ {{ number_format($somaValorFinanceiro, 2, ',', '.') }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=100&id=GRjZprTGEbNw&format=png&color=FFFFFF"
+                                        alt="" width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-exchange-alt"></i>
+                                <div>
+                                    <h5 class="card-title">Média Gastos Financeiro</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">{{ number_format($mediaFinanceiro, 2, ',', '.') }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=50&id=82688&format=png&color=FFFFFF"
+                                        alt="" width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-calendar-check"></i>
+                                <div>
+                                    <h5 class="card-title">Maior Valor</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">{{ number_format($maiorValorFinanceiro, 2, ',', '.') }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=64&id=uEzmr5TH7ZLw&format=png&color=FFFFFF"alt=""
+                                        width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-check-circle"></i>
+                                <div>
+                                    <h5 class="card-title">Total Registros RH</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">{{ $totalRegistrosRH }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=50&id=zRbU1NYxUdI2&format=png&color=FFFFFF"
+                                        alt="" width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-clock"></i>
+                                <div>
+                                    <h5 class="card-title">Soma Salários</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">R$ {{ number_format($somaSalarialRH, 2, ',', '.') }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=100&id=GRjZprTGEbNw&format=png&color=FFFFFF"
+                                        alt="" width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-dollar-sign"></i>
+                                <div>
+                                    <h5 class="card-title">Média Salarial</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">{{ number_format($mediaSalarialRH, 2, ',', '.') }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=50&id=82688&format=png&color=FFFFFF"
+                                        alt="" width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-money-bill-wave"></i>
+                                <div>
+                                    <h5 class="card-title">Menor Salário</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">{{ number_format($menorSalarioRH, 2, ',', '.') }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=64&id=uEzmr5TH7ZLw&format=png&color=FFFFFF"alt=""
+                                        width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-check-circle"></i>
+                                <div>
+                                    <h5 class="card-title">Total Registros Logística</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">{{ $totalLogistica }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=50&id=zRbU1NYxUdI2&format=png&color=FFFFFF"
+                                        alt="" width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-clock"></i>
+                                <div>
+                                    <h5 class="card-title">Custos com Envio</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">R$ {{ number_format($custoEnvio, 2, ',', '.') }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=100&id=GRjZprTGEbNw&format=png&color=FFFFFF"
+                                        alt="" width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-dollar-sign"></i>
+                                <div>
+                                    <h5 class="card-title">Média Custos com Envio</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">{{ number_format($mediaEnvioLogistica, 2, ',', '.') }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=50&id=82688&format=png&color=FFFFFF"
+                                        alt="" width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <div class="card card-custom">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="icon fas fa-money-bill-wave"></i>
+                                <div>
+                                    <h5 class="card-title">Maior custo para Envio</h5>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div>
+                                    <p class="value">{{ number_format($maiorCustoEnvioLogistica, 2, ',', '.') }}</p>
+                                </div>
+                                <div class="ml-auto">
+                                    <img src="https://img.icons8.com/?size=64&id=uEzmr5TH7ZLw&format=png&color=FFFFFF"alt=""
+                                        width="40" height="30">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="graficoChart row col-md-12 ml-0">
+                <div class="col-lg-6 col-md-12">
+                    <canvas id="myChart" width="350" height="350"></canvas>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <canvas id="myChart2" width="350" height="350"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 mb-2">
+            <div class="grafico col-md-12 pt-3 h-100 d-flex flex-column">
+                <div id="container" class="flex-grow-1 col-md-12" style="width: 100%; height: 100vh;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('js/dropdownFiltros.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var dateRangeInput = $('#dateRange');
+
+            dateRangeInput.daterangepicker({
+                locale: {
+                    cancelLabel: 'Cancelar',
+                    applyLabel: 'Aplicar',
+                    format: 'DD/MM/YYYY',
+                },
+                alwaysShowCalendars: true
+            }, function(start, end, label) {
+                console.log(start.format('DD/MM/YYYY'), end.format('DD/MM/YYYY'));
+
+                dateRangeInput.val(start.format('DD/MM/YYYY') + ' - ' + end.format('DD/MM/YYYY'));
+            });
+
+            dateRangeInput.on('cancel.daterangepicker', function(ev, picker) {
+                $(this).val('');
+                $(this).attr('placeholder', 'Período');
+            });
+
+            if (!dateRangeInput.val()) {
+                dateRangeInput.attr('placeholder', 'Período');
+            }
+
+            $('.daterangepicker').addClass('mr-4');
+
+            $('.daterangepicker .cancelBtn').css('color', 'white');
+        });
+    </script>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+
+        const gradient1 = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient1.addColorStop(0, 'rgba(0, 171, 214)');
+        gradient1.addColorStop(0.5, 'rgba(0, 238, 255, 0.979)');
+        gradient1.addColorStop(1, 'rgba(0, 171, 214)');
+
+        const gradient2 = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient2.addColorStop(0, 'rgba(113, 111, 235)');
+        gradient2.addColorStop(0.5, 'rgba(255, 255, 255)');
+        gradient2.addColorStop(1, 'rgba(113, 111, 235)');
+
+        const gradient3 = ctx.createLinearGradient(0, 0, 0, 400);
+        gradient3.addColorStop(0, 'rgba(0, 214, 46)');
+        gradient3.addColorStop(0.5, 'rgba(119, 255, 142, 0.7)');
+        gradient3.addColorStop(1, 'rgba(0, 214, 46)');
+
+        const data = {
+            labels: ['Financeiro', 'RH', 'Logística'],
+            datasets: [{
+                label: 'Soma dos Valores',
+                data: [
+                    {!! $somaValorFinanceiro !!},
+                    {!! $somaSalarialRH !!},
+                    {!! $custoEnvio !!}
+                ],
+                backgroundColor: [
+                    gradient1,
+                    gradient2,
+                    gradient3
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Distribuição de Valores Totais'
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx, config);
+    </script>
+    <script>
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+
+        const gradientFinanceiro = ctx2.createLinearGradient(0, 0, 0, 400);
+        gradientFinanceiro.addColorStop(0, 'rgba(0, 171, 214)');
+
+        const gradientRH = ctx2.createLinearGradient(0, 0, 0, 400);
+        gradientRH.addColorStop(1, 'rgba(113, 111, 235)');
+
+        const gradientLogistica = ctx2.createLinearGradient(0, 0, 0, 400);
+        gradientLogistica.addColorStop(0, 'rgba(0, 214, 46)');
+
+        const data2 = {
+            labels: [
+                'Janeiro', 'Fevereiro', 'Março', 'Abril',
+                'Maio', 'Junho', 'Julho', 'Agosto',
+                'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+            ],
+            datasets: [{
+                    label: 'Financeiro',
+                    data: @json(array_values($gastosFinanceiroPorMes)),
+                    borderColor: gradientFinanceiro,
+                    borderWidth: 2,
+                    fill: false
+                },
+                {
+                    label: 'RH',
+                    data: @json(array_values($gastosRHPorMes)),
+                    borderColor: gradientRH,
+                    borderWidth: 2,
+                    fill: false
+                },
+                {
+                    label: 'Logística',
+                    data: @json(array_values($gastosLogisticaPorMes)),
+                    borderColor: gradientLogistica,
+                    borderWidth: 2,
+                    fill: false
+                }
+            ]
+        };
+
+        const config2 = {
+            type: 'radar',
+            data: data2,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Desempenho Mensal por Setor'
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.247)',
+                            lineWidth: 1
+                        }
+                    }
+                }
+            }
+        };
+
+        new Chart(ctx2, config2);
+    </script>
+    <script>
+        Highcharts.chart('container', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: 'Estados do Brasil'
+            },
+            xAxis: {
+                categories: [
+                    'Acre', 'Alagoas', 'Amapá', 'Amazonas', 'Bahia', 'Ceará', 'Distrito Federal',
+                    'Espírito Santo', 'Goiás', 'Maranhão', 'Mato Grosso', 'Mato Grosso do Sul',
+                    'Minas Gerais', 'Pará', 'Paraíba', 'Paraná', 'Pernambuco', 'Piauí',
+                    'Rio de Janeiro', 'Rio Grande do Norte', 'Rio Grande do Sul', 'Rondônia',
+                    'Roraima', 'Santa Catarina', 'São Paulo', 'Sergipe', 'Tocantins'
+                ],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Valores',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' R$'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -624,
+                y: -10,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor: '#FFFFFF',
+                shadow: true
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Financeiro',
+                data: {!! json_encode($valoresPorEstadoFinanceiro) !!}
+            }, {
+                name: 'RH',
+                data: {!! json_encode($valoresPorEstadoRH) !!}
+            }, {
+                name: 'Logística',
+                data: {!! json_encode($valoresPorEstadoLogistica) !!}
+            }]
+        });
+    </script>
+</body>
+
+</html>
