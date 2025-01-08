@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interface do Print</title>
+  <style>
+    /* CSS Inline */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #fdf7f2; /* Fundo claro */
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: #444;
+    }
+
+    .login-button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* Cards Section */
+    .cards {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    /* Card maior à esquerda */
+    .large-card {
+      flex: 2;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .large-card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .large-card p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Cards empilhados à direita */
+    .stacked-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      flex: 1;
+    }
+
+    .small-card {
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      padding: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .small-card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 10px;
+    }
+
+    .small-card p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Hover nos cards */
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+    }
+
+    .footer h2 {
+      font-size: 1.5rem;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .input-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .input-wrapper input {
+      padding: 10px;
+      width: 70%;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background-color: #fff;
+    }
+
+    .send-button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .send-button:hover {
+      background-color: #e0e0e0;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+      }
+
+      .stacked-cards {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .large-card, .small-card {
+        width: 100%;
+      }
+
+      .input-wrapper input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>Bom dia</h1>
+      <button class="login-button">Entrar</button>
+    </header>
+
+    <!-- Cards Section -->
+    <section class="cards">
+      <!-- Imagem maior à esquerda -->
+      <div class="card large-card">
+        <img src="https://via.placeholder.com/400x250" alt="Cachorro feliz no campo">
+        <p>Saiba a que os animais de estimação são alérgicos</p>
+      </div>
+      <!-- Cards empilhados à direita -->
+      <div class="stacked-cards">
+        <div class="card small-card">
+          <img src="https://via.placeholder.com/200x125" alt="Pão caseiro">
+          <p>Descubra receitas fáceis de assar</p>
+        </div>
+        <div class="card small-card">
+          <img src="https://via.placeholder.com/200x125" alt="Receitas com poucos ingredientes">
+          <p>Obtenha receitas que utilizem apenas 5 ingredientes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <h2>Tópicos que pensei que você gostaria</h2>
+      <div class="input-wrapper">
+        <input type="text" placeholder="Mensagem para o Copilot">
+        <button class="send-button">➤</button>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
