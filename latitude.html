@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Garça - Localização de CEPs</title>
+  <!-- Link para o CSS do Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    /* Estilo para o mapa */
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Mapa de Garça - Localização dos CEPs</h2>
+  <div id="map"></div>
+
+  <!-- Link para o JavaScript do Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Criar o mapa centrado na cidade de Garça
+    var map = L.map('map').setView([-22.2309, -48.5791], 13); // Coordenadas de Garça
+
+    // Adicionar camada de mapa (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Coordenadas dos CEPs em Garça (aproximadas)
+    var ceps = [
+      {cep: "17400-009", rua: "Rua Bahia, Bairro Paulista", lat: -22.21026, lon: -49.68325},
+      {cep: "17400-038", rua: "Rua Paraíba, Bairro Rebelo", lat: -22.232, lon: -48.576},
+      {cep: "17400-040", rua: "Rua Sergipe, Bairro Rebelo", lat: -22.235, lon: -48.578},
+      {cep: "17400-046", rua: "Rua Heitor Penteado, Bairro Rebelo", lat: -22.238, lon: -48.580},
+      {cep: "17400-076", rua: "Rua José Augusto Escobar, Bairro Ferrarópolis", lat: -22.2056736, lon: -49.6569525}
+    ];
+
+    // Adicionar marcadores para cada CEP
+    ceps.forEach(function(cep) {
+      L.marker([cep.lat, cep.lon])
+        .addTo(map)
+        .bindPopup('<b>' + cep.rua + '</b><br>CEP: ' + cep.cep)
+        .openPopup();
+    });
+  </script>
+
+</body>
+</html>

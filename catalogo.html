@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especificações</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffffff;
+        }
+
+        .logo {
+            display: none;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: 400px;
+            flex: 1 1 300px;
+            margin-right: 30px;
+        }
+
+        .container {
+            flex: 2;
+            min-width: 300px;
+            font-size: 16px;
+            color: #000000;
+        }
+
+        .container p {
+            margin: 10px 0;
+            color: #001e3b;
+        }
+
+        .container strong {
+            font-weight: bold;
+        }
+
+        .btn {
+            background: linear-gradient(to bottom, #007BFF, #65c5f5, #00b3e6);
+            width: 100%;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            background-color: #003f7f;
+            transform: scale(0.95);
+        }
+
+        .btn:focus {
+            outline: none;
+            box-shadow: 0 0 5px #007BFF;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            .logo img {
+                height: 90px !important;
+            }
+
+            .content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content img {
+                max-width: 100%;
+                height: 300px;
+                margin-top: 20px;
+                margin-right: 0px;
+                flex: 1 1 300px;
+            }
+
+            .btn {
+                width: 95%;
+            }
+
+            .descricao {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="logo">
+            <img src="img/ecncLogo.png" alt="">
+        </div>
+        <img src="img/L-6040.webp" alt="">
+        <div class="container">
+            <p><strong>Potência:</strong> 50w</p>
+            <p><strong>Área Útil:</strong> X 600mm e Y 400mm</p>
+            <p><strong>Medidas:</strong> 950mm + 250mm x 750mm x 350mm</p>
+            <div class="descricao">
+                <p><strong>Acompanha:</strong> IHM dedicada com WiFi, pen drive, manuais em português, compressor,
+                    exaustor
+                    integrado e mesa tipo colmeia um régua.</p>
+            </div>
+            <a href="#"><button class="btn">Saiba mais</button></a>
+        </div>
+        <img src="img/L-560.webp" alt="">
+        <div class="container">
+            <p><strong>Potência:</strong> 90w a 100w</p>
+            <p><strong>Área Útil:</strong> X 600mm e Y 500mm</p>
+            <p><strong>Medidas:</strong> 1500mm x 1100mm x 1350mm</p>
+            <div class="descricao">
+                <p><strong>Acompanha:</strong> Chiller CH-5000 com monitoramento de f luxo de água, compressor de ar,
+                    exaustor de fumaça, pen drive, software e manuais em português, monitor touchscreen de 7”.</p>
+            </div>
+            <a href="#"><button class="btn">Saiba mais</button></a>
+        </div>
+        <img src="img/L-1060.webp" alt="">
+        <div class="container">
+            <p><strong>Potência:</strong> 90w a 130w</p>
+            <p><strong>Área Útil:</strong> X 1000mm e Y 600mm</p>
+            <p><strong>Medidas:</strong> 1500mm x 1100mm x 1350mm</p>
+            <div class="descricao">
+                <p><strong>Acompanha:</strong> Chiller CH-5000 com monitoramento de f luxo de água, compressor de ar,
+                    exaustor de fumaça, pen drive, software e manuais em português, monitor touchscreen de 7”.</p>
+            </div>
+            <a href="#"><button class="btn">Saiba mais</button></a>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inovus</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            background-color: #333;
+            margin: 4px 0;
+            transition: 0.3s;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: row;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
+        }
+
+        .parallax {
+            height: 100vh;
+            background-image: url('https://compraco.com.br/cdn/shop/articles/maquina_corte_a_laser.jpg?v=1714075650&width=1100');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .parallax h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .section-text {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card h2 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #0056b3;
+            margin-top: 5px;
+        }
+
+        .card img {
+            border-radius: 10px 10px 0 0;
+            display: block;
+            margin: 0 auto;
+            max-width: 60%;
+            height: auto;
+        }
+
+        .card-title {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .card-body {
+            flex-grow: 1;
+            padding: 0px;
+        }
+
+        .btn-link {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .section-title {
+            font-weight: bold;
+            font-size: 1.25rem;
+            color: #333;
+        }
+
+        .section-subtitle {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #000;
+        }
+
+        .card-custom {
+            border-radius: 15px;
+            transition: transform 0.2s;
+        }
+
+        .card-custom img {
+            border-radius: 10px;
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.432);
+        }
+
+        .card-custom:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-custom img:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 35px rgba(0, 0, 0, 0.432);
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0px;
+            justify-content: space-evenly;
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 40px 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin: 10px 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #555;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #0073e6;
+        }
+
+        .social-media {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-media a img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .ciesp-logo {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .ciesp-logo img {
+            max-width: 150px;
+        }
+
+        .chat-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: #0073e6;
+            color: #fff;
+            border-radius: 50%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .chat-button:hover {
+            background-color: #005bb5;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: flex;
+                flex-direction: column;
+                background: white;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                overflow: hidden;
+                height: 0;
+                transition: height 0.3s ease;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                padding: 10px 0;
+            }
+
+            nav ul li {
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav.active {
+                height: 250px;
+                opacity: 0.9;
+            }
+
+            .parallax h1 {
+                font-size: 1.8rem;
+            }
+
+            .card-custom img {
+                margin-top: 30px;
+            }
+
+            .propaganda img {
+                display: none !important;
+            }
+        }
+    </style>
+    <style>
+        .btn {
+            background: linear-gradient(to bottom, #007BFF, #65c5f5, #00b3e6);
+            width: 100%;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .btn:active {
+            background-color: #003f7f;
+            transform: scale(0.95);
+        }
+
+        .btn:focus {
+            outline: none;
+            box-shadow: 0 0 5px #007BFF;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="https://ecnc.com.br/wp-content/uploads/elementor/thumbs/Ecnc-gray-e1709058834734-qkfs3s7n155exl61n2q45wnebt0ged4ktleg47ha6y.png"
+                    alt="Inovus Logo">
+            </div>
+            <div class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#produtos">Produtos</a></li>
+                    <li><a href="#assistencia">Assistência Técnica</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#trabalhe-conosco">Trabalhe Conosco</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="parallax">
+        <h1>O futuro do corte a laser está aqui!</h1>
+    </section>
+
+    <div class="container my-0">
+        <div class="row">
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="card w-100">
+                    <h2>L-6040</h2>
+                    <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/08/BABY-CUT-PRICE.png?resize=278%2C300&ssl=1"
+                        class="card-img-top" alt="Hobby">
+                    <div class="card-body">
+                        <div class="container">
+                            <p><strong>Potência:</strong> 50w</p>
+                            <p><strong>Área Útil:</strong> X 600mm e Y 400mm</p>
+                            <p><strong>Medidas:</strong> 950mm + 250mm x 750mm x 350mm</p>
+                            <div class="descricao">
+                                <p><strong>Acompanha:</strong> IHM dedicada com WiFi, pen drive, manuais em português,
+                                    compressor,
+                                    exaustor
+                                    integrado e mesa tipo colmeia um régua.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-link">Saiba mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="card w-100">
+                    <h2>L-560</h2>
+                    <img src="img/L-560.webp"
+                        class="card-img-top" alt="Profissional">
+                    <div class="card-body">
+                        <div class="container">
+                            <p><strong>Potência:</strong> 90w a 100w</p>
+                            <p><strong>Área Útil:</strong> X 600mm e Y 500mm</p>
+                            <p><strong>Medidas:</strong> 1500mm x 1100mm x 1350mm</p>
+                            <div class="descricao">
+                                <p><strong>Acompanha:</strong> Chiller CH-5000 com monitoramento de f luxo de água,
+                                    compressor de ar,
+                                    exaustor de fumaça, pen drive, software e manuais em português, monitor touchscreen
+                                    de 7”.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-link">Saiba mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4 d-flex">
+                <div class="card w-100">
+                    <h2>L-1060</h2>
+                    <img src="img/L-1060.webp"
+                        class="card-img-top" alt="Peças e acessórios">
+                    <div class="card-body">
+                        <div class="container">
+                            <p><strong>Potência:</strong> 90w a 130w</p>
+                            <p><strong>Área Útil:</strong> X 1000mm e Y 600mm</p>
+                            <p><strong>Medidas:</strong> 1500mm x 1100mm x 1350mm</p>
+                            <div class="descricao">
+                                <p><strong>Acompanha:</strong> Chiller CH-5000 com monitoramento de f luxo de água,
+                                    compressor de ar,
+                                    exaustor de fumaça, pen drive, software e manuais em português, monitor touchscreen
+                                    de 7”.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0">
+                        <a href="#" class="btn btn-link">Saiba mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center my-0">
+        <div class="col-md-12">
+            <p class="section-title">BUSCANDO SOLUÇÕES?</p>
+            <h2 class="section-subtitle">ENTREGAMOS O PACOTE COMPLETO!</h2>
+        </div>
+    </div>
+    <div class="container text-center my-1">
+        <div class="row d-flex mt-0">
+            <div class="card-custom col-md-4">
+                <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/2.png?resize=1024%2C1024&ssl=1"
+                    alt="Ecn Supri" style="width: 100%; height: auto;">
+            </div>
+            <div class="card-custom col-md-4">
+                <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/1.png?resize=1024%2C1024&ssl=1"
+                    alt="Ecn Sempre" style="width: 100%; height: auto;">
+            </div>
+            <div class="card-custom col-md-4">
+                <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2023/04/ecnc-supri.png?resize=1024%2C1024&ssl=1"
+                    alt="Ecn Training" style="width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#">Cases de sucesso</a></li>
+                    <li><a href="#">Feedback</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Trabalhe Conosco</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Marketplace</h3>
+                <ul>
+                    <li><a href="#">loja.ecnc.com.br</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Parceiros</h3>
+                <ul>
+                    <li><a href="#">Inovus Indústria de Máquinas</a></li>
+                    <li><a href="#">Tarso Marques Concept</a></li>
+                    <li><a href="#">Do Bit ao Byte</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-container social-media">
+                    <a href="#" class="text-primary mr-3" style="font-size: 24px;">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+
+                    <a href="#" class="text-danger mr-3" style="font-size: 24px;">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+
+                    <a href="#" class="text-warning mr-3" style="font-size: 24px;">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+
+                    <a href="#" class="text-success mr-3" style="font-size: 24px;">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                </div>
+
+                <div class="ciesp-logo">
+                    <img src="https://i0.wp.com/ecnc.com.br/wp-content/uploads/2019/12/selo_associado_2023.png?resize=979%2C1024&ssl=1"
+                        alt="CIESP Logo">
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>

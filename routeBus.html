@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa de Garça - Localização de Ruas</title>
+
+  <!-- Link para o estilo do Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  
+  <style>
+    /* Estilos do layout do mapa e outros ajustes */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    #map {
+      height: 100vh;
+    }
+
+    .leaflet-popup-content {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .leaflet-popup-content b {
+      color: #007BFF;
+    }
+
+    .leaflet-control-zoom {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+    }
+
+    .legend {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Inicializando o mapa em Garça, SP (coordenadas mais precisas para a cidade)
+    const map = L.map('map').setView([-22.2200, -49.5400], 13); // Coordenadas ajustadas de Garça, SP
+
+    // Adicionando camada OpenStreetMap (garante a exibição correta dos dados)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 18
+    }).addTo(map);
+
+    // Função para criar ícones personalizados
+    const createIcon = () => L.icon({
+      iconUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/Blue_dot.svg', // Ícone
+      iconSize: [30, 30], // Tamanho do ícone
+      iconAnchor: [15, 30], // Posição do ícone
+      popupAnchor: [0, -30] // Posição do popup
+    });
+
+    // Dados das ruas com coordenadas ajustadas para dentro de Garça
+    const streets = [
+      { name: "Rua São Paulo", lat: -23.55052, lon: -46.633308 },
+      { name: "Rua Jose de Oliveira Souto", lat: -23.55052, lon: -46.633308 },
+      { name: "Rua Manoel da Costa", lat: -22.2195, lon: -49.5378 },
+      { name: "Rua Waldomiro dos Santos", lat: -22.2215, lon: -49.5355 },
+      { name: "Rua Jorge Yamauchi", lat: -22.2192, lon: -49.5339 },
+      { name: "Rua José Freire", lat: -22.2220, lon: -49.5398 },
+      { name: "Rua João Lourenço dos Santos", lat: -22.2186, lon: -49.5411 },
+      { name: "Rua Eduardo Rodrigues Barros", lat: -22.2224, lon: -49.5359 },
+      { name: "Rua Getúlio Vargas", lat: -22.2229, lon: -49.5332 },
+      { name: "Rua Ribeirão da Garça", lat: -22.2218, lon: -49.5295 },
+      { name: "Rua José Ribeiro", lat: -22.2232, lon: -49.5312 },
+      { name: "Rua João Batista de Lima", lat: -22.2178, lon: -49.5334 },
+      { name: "Rua Pedro de Toledo", lat: -22.2201, lon: -49.5339 },
+      { name: "Rua Dona Euzébia", lat: -22.2223, lon: -49.5373 },
+      { name: "Rua José de Alencar", lat: -22.2209, lon: -49.5385 },
+      { name: "Rua Antônio de Pádua", lat: -22.2237, lon: -49.5308 },
+      { name: "Rua Francisco Alves", lat: -22.2242, lon: -49.5315 },
+      { name: "Rua Benedito de Souza", lat: -22.2203, lon: -49.5306 },
+      { name: "Rua João de Barro", lat: -22.2214, lon: -49.5288 },
+      { name: "Rua Maria Aparecida", lat: -22.2193, lon: -49.5292 }
+    ];
+
+    // Adicionando marcadores para cada rua
+    streets.forEach(street => {
+      L.marker([street.lat, street.lon], { icon: createIcon() })
+        .addTo(map)
+        .bindPopup(`<b>${street.name}</b><br>CEP: [especificar CEP]`)
+        .openPopup();
+    });
+
+    // Adicionando a legenda ao mapa
+    const legend = L.control({ position: 'bottomright' });
+
+    legend.onAdd = function() {
+      const div = L.DomUtil.create('div', 'legend');
+      div.innerHTML = '<h4>Ruas em Garça</h4>';
+      div.innerHTML += '<p><b>Ícones Azuis</b>: Localização das ruas</p>';
+      return div;
+    };
+
+    legend.addTo(map);
+  </script>
+</body>
+</html>
