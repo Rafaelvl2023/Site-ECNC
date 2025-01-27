@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .income {
+            color: green;
+        }
+        .expense {
+            color: red;
+        }
+        .total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Controle de Gastos</h1>
+
+        <div class="form-row mb-4">
+            <div class="col-md-5">
+                <label for="startDate">Data Inicial:</label>
+                <input type="date" class="form-control" id="startDate">
+            </div>
+            <div class="col-md-5">
+                <label for="endDate">Data Final:</label>
+                <input type="date" class="form-control" id="endDate">
+            </div>
+            <div class="col-md-2 align-self-end">
+                <button class="btn btn-primary btn-block" onclick="filterByDate()">Filtrar</button>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Data e Hora</th>
+                        <th>Valor</th>
+                        <th>Descrição</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="transactions">
+                    <!-- Linhas dinâmicas aqui -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="total">
+            Saldo Total: <span id="totalBalance">0,00</span>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="amount" placeholder="Valor" step="0.01">
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="description" placeholder="Descrição (opcional)">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-block" onclick="addTransaction()">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para edição -->
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Editar Transação</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="editAmount">Valor</label>
+                            <input type="text" class="form-control" id="editAmount">
+                        </div>
+                        <div class="form-group">
+                            <label for="editDescription">Descrição</label>
+                            <input type="text" class="form-control" id="editDescription">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveEdit">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        let balance = 0;
+        let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+        let currentEditIndex = null;
+
+        function formatCurrency(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function parseCurrency(value) {
+            return parseFloat(value.replace(/[R$\s,.]/g, '').replace(',', '.')) / 100;
+        }
+
+        function updateBalance() {
+            balance = transactions.reduce((acc, transaction) => acc + transaction.amount, 0);
+            document.getElementById('totalBalance').textContent = formatCurrency(balance);
+        }
+
+        function saveTransactions() {
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+        }
+
+        function renderTransactions(filteredTransactions = null) {
+            const tableBody = document.getElementById('transactions');
+            tableBody.innerHTML = '';
+            const dataToRender = filteredTransactions || transactions;
+            dataToRender.forEach((transaction, index) => {
+                const row = document.createElement('tr');
+
+                const dateCell = document.createElement('td');
+                dateCell.textContent = transaction.date;
+
+                const valueCell = document.createElement('td');
+                valueCell.textContent = formatCurrency(transaction.amount);
+                valueCell.className = `amount ${transaction.amount >= 0 ? 'income' : 'expense'}`;
+
+                const descriptionCell = document.createElement('td');
+                descriptionCell.textContent = transaction.description || '-';
+
+                const actionsCell = document.createElement('td');
+                actionsCell.className = 'text-center';
+                actionsCell.innerHTML = `
+                    <button class="btn btn-warning btn-sm mr-2" onclick="openEditModal(${index})">Editar</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteTransaction(${index})">Excluir</button>
+                `;
+
+                row.appendChild(dateCell);
+                row.appendChild(valueCell);
+                row.appendChild(descriptionCell);
+                row.appendChild(actionsCell);
+                tableBody.appendChild(row);
+            });
+            updateBalance();
+        }
+
+        function addTransaction() {
+            const amountInput = document.getElementById('amount');
+            const descriptionInput = document.getElementById('description');
+
+            const amount = parseFloat(amountInput.value);
+            const description = descriptionInput.value.trim();
+            const date = new Date().toISOString();
+
+            if (isNaN(amount)) {
+                alert('Por favor, insira um valor válido.');
+                return;
+            }
+
+            transactions.push({ amount, description, date });
+            saveTransactions();
+            renderTransactions();
+
+            amountInput.value = '';
+            descriptionInput.value = '';
+        }
+
+        function openEditModal(index) {
+            currentEditIndex = index;
+            const transaction = transactions[index];
+
+            document.getElementById('editAmount').value = formatCurrency(transaction.amount);
+            document.getElementById('editDescription').value = transaction.description;
+
+            $('#editModal').modal('show');
+        }
+
+        document.getElementById('saveEdit').addEventListener('click', () => {
+            const newAmountString = document.getElementById('editAmount').value;
+            const newDescription = document.getElementById('editDescription').value;
+
+            const newAmount = parseCurrency(newAmountString);
+            if (isNaN(newAmount)) {
+                alert('Por favor, insira um valor válido.');
+                return;
+            }
+
+            transactions[currentEditIndex] = { 
+                amount: newAmount, 
+                description: newDescription || '-', 
+                date: transactions[currentEditIndex].date 
+            };
+            saveTransactions();
+            renderTransactions();
+            $('#editModal').modal('hide');
+        });
+
+        function deleteTransaction(index) {
+            transactions.splice(index, 1);
+            saveTransactions();
+            renderTransactions();
+        }
+
+        function filterByDate() {
+            const startDateInput = document.getElementById('startDate').value;
+            const endDateInput = document.getElementById('endDate').value;
+
+            const startDate = startDateInput ? new Date(startDateInput) : null;
+            const endDate = endDateInput ? new Date(endDateInput) : null;
+
+            const filteredTransactions = transactions.filter(transaction => {
+                const transactionDate = new Date(transaction.date);
+                if (startDate && transactionDate < startDate) return false;
+                if (endDate && transactionDate > endDate) return false;
+                return true;
+            });
+
+            renderTransactions(filteredTransactions);
+        }
+
+        renderTransactions();
+    </script>
+</body>
+</html>

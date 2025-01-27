@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .income {
+            color: green;
+        }
+        .expense {
+            color: red;
+        }
+        .total {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-0 mb-5">
+        <h3 class="text-center mb-4">Controle de Gastos</h3>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Valor</th>
+                        <th>Descrição</th>
+                        <th style="width: 50px;">Movimentação</th>
+                        <th style="width: 190px;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="transactions">
+                    <!-- Linhas dinâmicas aqui -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="total">
+            Saldo Total: <span id="totalBalance">0,00</span>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-md-4">
+                <input type="number" class="form-control" id="amount" placeholder="Valor" step="0.01">
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="description" placeholder="Descrição (opcional)">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary btn-block" onclick="addTransaction()">Adicionar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar -->
+    <div class="modal" id="editModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Transação</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="editAmount">Valor</label>
+                        <input type="number" class="form-control" id="editAmount" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="editDescription">Descrição</label>
+                        <input type="text" class="form-control" id="editDescription">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" onclick="saveEditTransaction()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let balance = 0;
+        let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+        let editIndex = -1;
+
+        function formatCurrency(value) {
+            return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        function updateBalance() {
+            balance = transactions.reduce((acc, transaction) => {
+                return transaction.isPaid ? acc + transaction.amount : acc;
+            }, 0);
+            document.getElementById('totalBalance').textContent = formatCurrency(balance);
+        }
+
+        function saveTransactions() {
+            localStorage.setItem('transactions', JSON.stringify(transactions));
+        }
+
+        function renderTransactions() {
+            const tableBody = document.getElementById('transactions');
+            tableBody.innerHTML = '';
+            transactions.forEach((transaction, index) => {
+                const row = document.createElement('tr');
+
+                const valueCell = document.createElement('td');
+                valueCell.textContent = formatCurrency(transaction.amount);
+                valueCell.className = `amount ${transaction.amount >= 0 ? 'income' : 'expense'}`;
+
+                const descriptionCell = document.createElement('td');
+                descriptionCell.textContent = transaction.description || '-';
+
+                const paidCell = document.createElement('td');
+                const paidCheckbox = document.createElement('input');
+                paidCheckbox.type = 'checkbox';
+                paidCheckbox.checked = transaction.isPaid;
+                paidCheckbox.addEventListener('change', () => {
+                    transaction.isPaid = paidCheckbox.checked;
+                    saveTransactions();
+                    updateBalance();
+                });
+                paidCell.appendChild(paidCheckbox);
+
+                const actionsCell = document.createElement('td');
+                actionsCell.className = 'text-center';
+                actionsCell.innerHTML = ` 
+                    <button class="btn btn-warning btn-sm mr-2" onclick="openEditModal(${index})">Editar</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteTransaction(${index})">Excluir</button>
+                `;
+
+                row.appendChild(valueCell);
+                row.appendChild(descriptionCell);
+                row.appendChild(paidCell);
+                row.appendChild(actionsCell);
+                tableBody.appendChild(row);
+            });
+            updateBalance();
+        }
+
+        function addTransaction() {
+            const amountInput = document.getElementById('amount');
+            const descriptionInput = document.getElementById('description');
+
+            const amount = parseFloat(amountInput.value);
+            const description = descriptionInput.value.trim();
+
+            if (isNaN(amount)) {
+                alert('Por favor, insira um valor válido.');
+                return;
+            }
+
+            transactions.push({ amount, description, isPaid: false });
+            saveTransactions();
+            renderTransactions();
+
+            amountInput.value = '';
+            descriptionInput.value = '';
+        }
+
+        function deleteTransaction(index) {
+            transactions.splice(index, 1);
+            saveTransactions();
+            renderTransactions();
+        }
+
+        function openEditModal(index) {
+            editIndex = index;
+            const transaction = transactions[index];
+            document.getElementById('editAmount').value = transaction.amount;
+            document.getElementById('editDescription').value = transaction.description;
+            $('#editModal').modal('show');
+        }
+
+        function saveEditTransaction() {
+            const amount = parseFloat(document.getElementById('editAmount').value);
+            const description = document.getElementById('editDescription').value.trim();
+
+            if (isNaN(amount)) {
+                alert('Por favor, insira um valor válido.');
+                return;
+            }
+
+            transactions[editIndex] = { amount, description, isPaid: false };
+            saveTransactions();
+            renderTransactions();
+            $('#editModal').modal('hide');
+        }
+
+        renderTransactions();
+    </script>
+
+    <!-- Bootstrap and jQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
